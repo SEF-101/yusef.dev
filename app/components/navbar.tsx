@@ -22,8 +22,8 @@ import {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/services">
-                  Services
+                <NavigationMenuLink href="/projects">
+                  Projects
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>

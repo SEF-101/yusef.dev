@@ -2,12 +2,9 @@ import Navbar from "./components/navbar";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--background)] text-[var(--primary)]">
-
-      <Navbar />
-      {/* Page Content */}
+    <div className="flex flex-col min-h-screen">
       <main className="flex-grow">
-        {/* Add your page-specific content here */}
+        {/* home */}
       </main>
     </div>
   );
