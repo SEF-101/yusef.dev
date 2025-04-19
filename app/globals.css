@@ -6,7 +6,7 @@
   --color-background-light: #FFFFFF;
   --color-background-dark: #0B0B0E;
   --color-surface: #1A1A24;
-  --color-accent: #14B8A6;
+  --color-accent: #1B2A41;
   --font-sans: 'Geist Sans', sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --shadow-glow: 0 0 15px #3B82F6;
@@ -34,7 +34,7 @@
       --card-foreground: #ffffff;
       --primary: #3B82F6;
       --primary-foreground: #ffffff;
-      --accent: #14B8A6;
+      --accent: var(--color-accent);
       --accent-foreground: #ffffff;
       --ring: #3B82F6;
     }
