@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
 
+
 const ProjectCard = ({ project }) => {
   const router = useRouter();
 

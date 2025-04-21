@@ -7,8 +7,7 @@
   --color-background-dark: #0B0B0E;
   --color-surface: #1A1A24;
   --color-accent: #1B2A41;
-  --font-sans: 'Geist Sans', sans-serif;
-  --font-mono: 'Geist Mono', monospace;
+  --font-anton: 'Anton'; 
   --shadow-glow: 0 0 15px #3B82F6;
 }
 
@@ -43,7 +42,7 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans);
+    font-family: var(--font-anton);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
