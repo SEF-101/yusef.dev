@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader } from "./ui/card";
-import { useRouter } from 'next/navigation';
 import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
 
