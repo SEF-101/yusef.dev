@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton } from "next/font/google";
+import { Anton, Roboto } from "next/font/google";
 import Navbar from "@/components/navbar";
 import "./globals.css";
 
@@ -8,6 +8,12 @@ const anton = Anton({
   variable: "--font-anton",
   subsets: ["latin"],
   weight: "400",
+});
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "700"], 
 });
 
 export const metadata: Metadata = {
@@ -21,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${anton.variable}`}>
+    <html lang="en" className={`${anton.variable} ${roboto.variable}`}>
       <body className="flex flex-col min-h-screen bg-[var(--background)] text-[var(--primary)]">
         <Navbar />
         <main className="flex-grow">{children}</main>
