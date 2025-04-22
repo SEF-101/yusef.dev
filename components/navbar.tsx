@@ -18,9 +18,6 @@ export default function Navbar() {
               <NavigationMenuLink href="/" className="text-base">Home</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/about" className="text-base">About</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
               <NavigationMenuLink href="/projects" className="text-base">Projects</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
