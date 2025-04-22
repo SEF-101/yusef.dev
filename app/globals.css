@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-primary: #3B82F6;
   --color-background-light: #FFFFFF;
@@ -10,6 +12,7 @@
   --font-anton: 'Anton'; 
   --font-roboto: "Roboto", sans-serif;
   --shadow-glow: 0 0 15px #3B82F6;
+  --border: #E5E7EB;
 }
 
 @layer base {
@@ -24,6 +27,7 @@
     --accent-foreground: #ffffff;
     --radius: 0.5rem;
     --ring: #3B82F6;
+    --border: #E5E7EB;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -37,6 +41,7 @@
       --accent: var(--color-accent);
       --accent-foreground: #ffffff;
       --ring: #3B82F6;
+      --border: #E5E7EB;
     }
   }
 
@@ -45,5 +50,22 @@
     color: var(--foreground);
     font-family: var(--font-anton);
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@theme inline {
+  --animate-meteor: meteor 5s linear infinite;
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+    }
+  70% {
+    opacity: 1;
+    }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+    }
   }
 }

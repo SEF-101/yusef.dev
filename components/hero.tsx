@@ -1,3 +1,5 @@
+import { Meteors } from "@/components/magicui/meteors";
+
 export default function Hero() {
     return (
         <>
@@ -5,7 +7,10 @@ export default function Hero() {
             <section className="flex items-center justify-between min-h-screen px-8 text-[var(--foreground)]">
                 <div className="space-y-4">
                     <h1 className="text-6xl font-bold">
-                        <span className="block">Hi,</span>
+                        <Meteors />
+                        <span className="block relative">
+                            <span className="relative z-10">Hi,</span>
+                        </span>
                         <span className="block">
                             I'm Yu
                             <span className="relative">
@@ -14,6 +19,7 @@ export default function Hero() {
                             </span>
                         </span>
                     </h1>
+
                     <p className="text-lg">
                         A passionate developer skilled in modern web technologies.
                     </p>
