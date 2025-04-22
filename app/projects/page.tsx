@@ -6,7 +6,7 @@ import ProjectCard from "@/components/project-card";
 const projectData = [
   {
     image: "",
-    category: "react js",
+    category: "React Js",
     name: "Amazon clone",
     description: "Amazon Clone made with React, Tailwind, JavaScript, and Redux",
     link: "https://amazon-clone-ten-lemon.vercel.app/",
@@ -14,7 +14,7 @@ const projectData = [
   },
   {
     image: "",
-    category: "react js",
+    category: ".NET",
     name: "Homeland",
     description: "A real estate rental website made with React, Tailwind & JavaScript.",
     link: "https://beautiful-homeland.netlify.app/",
