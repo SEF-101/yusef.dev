@@ -4,7 +4,7 @@ export default function Hero() {
     return (
         <>
             {/* hero */}
-            <section className="flex items-center justify-between min-h-screen px-8 text-[var(--foreground)]">
+            <section className="flex items-center justify-between min-h-screen px-8 text-[var(--foreground)] ">
                 <div className="space-y-4">
                     <h1 className="text-6xl font-bold">
                         <Meteors />

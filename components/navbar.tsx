@@ -7,7 +7,7 @@ import {
 
 export default function Navbar() {
   return (
-    <header className="bg-[var(--navbar-background)] shadow-md">
+    <header className="shadow-md">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* "logo" */}
         <div className="text-4xl font-bold">SEF</div>
