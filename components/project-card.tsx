@@ -7,7 +7,6 @@ import { Badge } from "./ui/badge";
 
 
 const ProjectCard = ({ project }) => {
-  const router = useRouter();
 
   // Create onClick handler for whole card
   // const handleCardClick = () => {

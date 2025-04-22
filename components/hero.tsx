@@ -12,7 +12,7 @@ export default function Hero() {
                             <span className="relative z-10">Hi,</span>
                         </span>
                         <span className="block">
-                            I'm Yu
+                            I&apos;m Yu
                             <span className="relative">
                                 <span className="text-[var(--primary)]">sef</span>
                                 <span className="absolute text-xs text-[var(--primary)] bottom-4">101</span>
@@ -26,11 +26,7 @@ export default function Hero() {
                 </div>
 
                 <div className="w-1/3">
-                    <img
-                        src="/profile.jpg"
-                        alt="Yusef"
-                        className="rounded-full shadow-lg"
-                    />
+
                 </div>
             </section>
         </>
