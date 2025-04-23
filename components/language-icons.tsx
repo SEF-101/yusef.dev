@@ -34,7 +34,7 @@ const slugs = [
   "figma",
 ];
 
-export function IconCloudDemo() {
+export function IconCloudTechnologies() {
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
   );
