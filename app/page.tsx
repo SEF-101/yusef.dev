@@ -1,5 +1,5 @@
 import Hero from "@/components/hero";
-import { IconCloudDemo } from "@/components/language-cons";
+import { IconCloudDemo } from "@/components/language-icons";
 
 export default function Home() {
   return (
