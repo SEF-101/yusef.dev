@@ -29,7 +29,7 @@ const slugs = [
   "jira",
   "github",
   "gitlab",
-  "visualstudiocode",
+  "postman",
   "androidstudio",
   "figma",
 ];
