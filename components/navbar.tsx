@@ -7,7 +7,7 @@ import {
 
 export default function Navbar() {
   return (
-    <header className="shadow-md">
+    <header className="shadow-md sticky top-0 z-50 bg-[var(--background)]">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* "logo" */}
         <div className="text-4xl font-bold">SEF</div>
@@ -15,13 +15,16 @@ export default function Navbar() {
         <NavigationMenu className="flex justify-center py-4">
           <NavigationMenuList className="flex gap-6">
             <NavigationMenuItem>
-              <NavigationMenuLink href="/" className="text-base">Home</NavigationMenuLink>
+              <NavigationMenuLink href="#home" className="text-base">Home</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/projects" className="text-base">Projects</NavigationMenuLink>
+              <NavigationMenuLink href="#projects" className="text-base">Projects</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/contact" className="text-base">Contact</NavigationMenuLink>
+              <NavigationMenuLink href="#about" className="text-base">About</NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#contact" className="text-base">Contact</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

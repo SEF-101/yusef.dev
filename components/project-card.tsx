@@ -5,7 +5,17 @@ import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 
-const ProjectCard = ({ project }) => {
+interface Project {
+  id: string;
+  image: string;
+  link: string;
+  github: string;
+  category: string;
+  name: string;
+  description: string;
+}
+
+const ProjectCard = ({ project }: { project: Project }) => {
 
   // Create onClick handler for whole card
   // const handleCardClick = () => {
