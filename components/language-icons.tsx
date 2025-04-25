@@ -11,6 +11,7 @@ const slugs = [
   "c++",
   "html5",
   "css3",
+  "tailwindcss",
   "nodedotjs",
   "express",
   "nextdotjs",
@@ -32,6 +33,9 @@ const slugs = [
   "postman",
   "androidstudio",
   "figma",
+  "swagger",
+  "mongodb",
+  "mysql",
 ];
 
 export function IconCloudTechnologies() {
