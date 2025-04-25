@@ -1,11 +1,12 @@
 import { Meteors } from "@/components/magicui/meteors";
+import Image from "next/image";
 
 export default function Hero() {
     return (
         <>
             {/* hero */}
-            <section className="flex items-center justify-between min-h-screen px-8 text-[var(--foreground)] ">
-                <div className="space-y-4">
+            <section className="flex items-center min-h-screen px-8 text-[var(--foreground)]">
+                <div className="w-1/2 space-y-4">
                     <h1 className="text-6xl font-bold">
                         <Meteors />
                         <span className="block relative">
@@ -25,8 +26,15 @@ export default function Hero() {
                     </p>
                 </div>
 
-                <div className="w-1/3">
-
+                <div className="w-1/3 flex justify-left">
+                        <Image
+                            src="/transparent.png"
+                            alt="Yusef's profile picture"
+                            width={500}
+                            height={450}
+                            className="object-cover w-full"
+                            priority
+                        />
                 </div>
             </section>
         </>
