@@ -1,13 +1,17 @@
+"use client";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { ScrollProgress } from "@/components/magicui/scroll-progress";
 
 export default function Navbar() {
   return (
     <header className="shadow-md sticky top-0 z-50 bg-[var(--background)]">
+      <ScrollProgress />
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* "logo" */}
         <div className="text-4xl font-bold">SEF</div>
