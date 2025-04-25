@@ -1,16 +1,31 @@
 import { Meteors } from "@/components/magicui/meteors";
 import Image from "next/image";
+import {Linkedin, Github} from "lucide-react"
 
 export default function Hero() {
     return (
         <>
             {/* hero */}
-            <section className="flex items-center min-h-screen px-8 text-[var(--foreground)]">
-                <div className="w-1/2 space-y-4">
+            <section className="flex items-center min-h-screen px-8 text-[var(--foreground)] relative">
+                <div className="absolute inset-0">
+                    <Meteors />
+                </div>
+                
+                <div className="w-1/3 flex justify-center relative">
+                    <Image
+                        src="/transparent.png"
+                        alt="Yusef's profile picture"
+                        width={500}
+                        height={450}
+                        className="object-cover w-full"
+                        priority
+                    />
+                </div>
+                
+                <div className="w-1/2 space-y-4 ml-30 relative">
                     <h1 className="text-6xl font-bold">
-                        <Meteors />
                         <span className="block relative">
-                            <span className="relative z-10">Hi,</span>
+                            <span className="relative">Hi,</span>
                         </span>
                         <span className="block">
                             I&apos;m Yu
@@ -24,17 +39,15 @@ export default function Hero() {
                     <p className="text-lg">
                         A passionate developer skilled in modern web technologies.
                     </p>
-                </div>
 
-                <div className="w-1/3 flex justify-left">
-                        <Image
-                            src="/transparent.png"
-                            alt="Yusef's profile picture"
-                            width={500}
-                            height={450}
-                            className="object-cover w-full"
-                            priority
-                        />
+                    <div className="flex space-x-4 pt-2">
+                        <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                            <Linkedin size={24} />
+                        </a>
+                        <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                            <Github size={24} />
+                        </a>
+                    </div>
                 </div>
             </section>
         </>
