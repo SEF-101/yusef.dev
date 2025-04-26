@@ -6,24 +6,26 @@ export default function Hero() {
     return (
         <>
             {/* hero */}
-            <section className="flex items-center min-h-screen px-8 text-[var(--foreground)] relative">
+            <section className="flex flex-col md:flex-row items-center min-h-screen px-8 text-[var(--foreground)] relative">
                 <div className="absolute inset-0">
                     <Meteors />
                 </div>
                 
-                <div className="w-1/3 flex justify-center relative">
+                {/* Image Section */}
+                <div className="flex justify-center relative w-full md:w-1/3 mb-8 md:mb-0">
                     <Image
                         src="/transparent.png"
                         alt="Yusef's profile picture"
                         width={500}
                         height={450}
-                        className="object-cover w-full"
+                        className="object-cover w-3/4 md:w-full"
                         priority
                     />
                 </div>
                 
-                <div className="w-1/2 space-y-4 ml-30 relative">
-                    <h1 className="text-6xl font-bold">
+                {/* Text Section */}
+                <div className="w-full md:w-2/3 space-y-4 md:ml-8 relative text-center md:text-left">
+                    <h1 className="text-4xl md:text-6xl font-bold">
                         <span className="block relative">
                             <span className="relative">Hi,</span>
                         </span>
@@ -40,7 +42,7 @@ export default function Hero() {
                         A passionate developer skilled in modern web technologies.
                     </p>
 
-                    <div className="flex space-x-4 pt-2">
+                    <div className="flex justify-center md:justify-start space-x-4 pt-2">
                         <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
                             <Linkedin size={36} />
                         </a>
