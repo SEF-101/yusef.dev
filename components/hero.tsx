@@ -42,10 +42,10 @@ export default function Hero() {
 
                     <div className="flex space-x-4 pt-2">
                         <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
-                            <Linkedin size={24} />
+                            <Linkedin size={36} />
                         </a>
                         <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
-                            <Github size={24} />
+                            <Github size={36} />
                         </a>
                     </div>
                 </div>
