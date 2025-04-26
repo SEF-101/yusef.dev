@@ -12,10 +12,10 @@ export default function Home() {
         <Hero />
       </section>
 
-      {/* technologies */}
+      {/* experience */}
       <section id="technologies" className="py-16 bg-[var(--card)]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8 text-center">Technologies</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center">Experience</h2>
           <div className="h-[400px] w-full max-w-5xl mx-auto">
             <IconCloudTechnologies />
           </div>
