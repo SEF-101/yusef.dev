@@ -1,7 +1,14 @@
 import Hero from "@/components/hero";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 import { IconCloudTechnologies } from "@/components/language-icons";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
+import { WarpBackground } from "@/components/magicui/warp-background";
 import ProjectsSection from "@/components/projects-section";
 
 export default function Home() {
@@ -84,21 +91,27 @@ export default function Home() {
       </section>
 
       {/* contact */}
-      <section id="contact" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8 text-center">Get in Touch</h2>
-          <div className="max-w-md mx-auto text-center">
-            <p className="text-lg mb-8">
-              Feel free to reach out to me via email. I'd love to hear from you!
-            </p>
-            <a
-              href="mailto:yusef8000@gmail.com"
-              className="text-xl text-[var(--primary)] hover:underline"
-            >
-              yusef8000@gmail.com
-            </a>
+      <section id="contact" className="">
+        <WarpBackground className="">
+          <div className="container mx-auto px-4 flex justify-center">
+            <Card className="w-full max-w-md bg-[var(--card)] shadow-lg">
+              <CardContent className="flex flex-col gap-4 p-6">
+                <CardTitle className="text-4xl font-bold text-center text-[var(--primary)]">
+                  Get in Touch
+                </CardTitle>
+                <CardDescription className="text-lg text-center text-[var(--foreground)]">
+                  Feel free to reach out to me via email. I'd love to hear from you!
+                </CardDescription>
+                <a
+                  href="mailto:yusef8000@gmail.com"
+                  className="text-xl text-center text-[var(--primary)] hover:underline"
+                >
+                  yusef8000@gmail.com
+                </a>
+              </CardContent>
+            </Card>
           </div>
-        </div>
+        </WarpBackground>
       </section>
     </div>
   );
