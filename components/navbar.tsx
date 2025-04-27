@@ -14,13 +14,10 @@ export default function Navbar() {
       <ScrollProgress />
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* "logo" */}
-        <div className="text-4xl font-bold">SEF</div>
+        <a href="#home" className="text-4xl font-bold">SEF</a>
         {/* menu choices */}
         <NavigationMenu className="flex justify-center py-4">
           <NavigationMenuList className="flex gap-6">
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#home" className="text-base">Home</NavigationMenuLink>
-            </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink href="#projects" className="text-base">Projects</NavigationMenuLink>
             </NavigationMenuItem>
