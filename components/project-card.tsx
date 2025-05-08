@@ -24,22 +24,24 @@ interface Project {
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Card className="group overflow-hidden relative">
-      <CardHeader className="p-0">
-        {/* image container with fixed aspect ratio and overflow control */}
-        <div className="relative w-full h-[200px] flex items-center justify-center bg-tertiary dark:bg-secondary/40 overflow-hidden">
-          <Image
-            src={project.image || "/placeholder-project.png"}
-            width={500}
-            height={300}
-            alt={project.name || "Project image"}
-            className="object-contain w-full h-full"
-            priority
-          />
-        </div>
-        <Badge className="text-sm absolute top-4 left-5 bg-accent text-primary">
-          {project.category}
-        </Badge>
-      </CardHeader>
+<CardHeader className="p-0 flex flex-col">
+  <div className="px-5 pb-0.5">
+    <Badge className="text-sm bg-accent text-primary">
+      {project.category}
+    </Badge>
+  </div>
+
+  <div className="relative w-full h-[180px] flex items-center justify-center bg-tertiary dark:bg-secondary/40 overflow-hidden">
+    <Image
+      src={project.image || "/placeholder-project.png"}
+      width={500}
+      height={300}
+      alt={project.name || "Project image"}
+      className="object-contain w-full h-full"
+      priority
+    />
+  </div>
+</CardHeader>
 
       <CardContent className="px-8 py-6">
         <CardTitle className="mb-1">{project.name}</CardTitle>
