@@ -7,7 +7,7 @@ const projectData = [
     category: "Python",
     name: "SEF101's Video Compressor",
     description:
-      "A video compressor made with Python and UI library customtkinter. Needs ffmpeg installed.",
+      "A Python-based desktop app for compressing videos to a target file size using FFmpeg. Features a modern CustomTkinter UI, dynamic bitrate control, and background processing to keep the interface responsive. Compressed files are saved automatically to the Downloads folder.",
     github: "https://github.com/SEF-101/SEF101sVideoCompressor",
   },
   {
