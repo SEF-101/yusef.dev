@@ -1,6 +1,3 @@
-"use client";
-import React, { useState } from "react";
-import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import ProjectCard from "@/components/project-card";
 
 const projectData = [
@@ -9,7 +6,8 @@ const projectData = [
     image: "/projectPics/video_compressor_pic.png",
     category: "Python",
     name: "SEF101's Video Compressor",
-    description: "A video compressor made with Python and UI library customtkinter. Needs ffmpeg installed.",
+    description:
+      "A video compressor made with Python and UI library customtkinter. Needs ffmpeg installed.",
     github: "https://github.com/SEF-101/SEF101sVideoCompressor",
   },
   {
@@ -17,7 +15,8 @@ const projectData = [
     image: "/projectPics/geoexplore_pic.png",
     category: "Java",
     name: "GeoExplore",
-    description: "A real-time city interaction app built in Java with WebSockets, REST APIs, and Google Maps. Enables hazard reporting, event sharing, and location tracking between citizens and city officials.",
+    description:
+      "A real-time city interaction app built in Java with WebSockets, REST APIs, and Google Maps. Enables hazard reporting, event sharing, and location tracking between citizens and city officials.",
     github: "https://github.com/SEF-101/GeoExplore",
   },
   {
@@ -25,48 +24,24 @@ const projectData = [
     image: "/projectPics/gridai_pic.png",
     category: "React",
     name: "GridAI",
-    description: "A real-time power grid management platform built for utility operators, featuring AI-driven insights, interactive dashboards, and collaborative code editing. Developed with React, TypeScript, Go, and Python, it supports live data visualization, CRDT-based file editing, and scalable frontend architecture.",
+    description:
+      "A real-time power grid management platform built for utility operators, featuring AI-driven insights, interactive dashboards, and collaborative code editing. Developed with React, TypeScript, Go, and Python, it supports live data visualization, CRDT-based file editing, and scalable frontend architecture.",
     link: "https://sddec25-17.sd.ece.iastate.edu/",
   },
-  
-];
-
-const uniqueCategories = [
-  "all projects",
-  ...new Set(projectData.map((item) => item.category)),
 ];
 
 export default function ProjectsSection() {
-  const [category, setCategory] = useState("all projects");
-
-  const filteredProjects = projectData.filter((project) =>
-    category === "all projects" ? true : project.category === category
-  );
-
   return (
-    <>
-      <h2 className="text-4xl font-bold mb-8 text-center">My Projects</h2>
-      <Tabs defaultValue={category} className="mb-12">
-        <TabsList className="w-full grid h-full md:grid-cols-4 lg:max-w-[640px] mb-12 mx-auto md:border dark:border-none">
-          {uniqueCategories.map((cat, index) => (
-            <TabsTrigger
-              key={index}
-              value={cat}
-              onClick={() => setCategory(cat)}
-              className="capitalize w-[162px] md:w-auto data-[state=active]:bg-accent"
-            >
-              {cat}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        <div className="text-lg xl:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {filteredProjects.map((project, index) => (
-            <TabsContent value={category} key={index}>
-              <ProjectCard project={project} />
-            </TabsContent>
+    <section className="py-16">
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-bold mb-12 text-center">My Projects</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectData.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-      </Tabs>
-    </>
+      </div>
+    </section>
   );
 }
