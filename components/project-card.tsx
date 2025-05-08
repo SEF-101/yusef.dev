@@ -1,9 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
-
 
 interface Project {
   id: string;
@@ -19,14 +25,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Card className="group overflow-hidden relative">
       <CardHeader className="p-0">
-        {/* image */}
-        <div className="relative w-full h-[300px] flex items-center justify-center bg-tertiary dark:bg-secondary/40 xl:bg-work_project_bg_light xl:dark:bg-work_project_bg_dark xl:bg-[110%] xl:bg-no-repeat">
+        {/* image container with fixed aspect ratio and overflow control */}
+        <div className="relative w-full h-[200px] flex items-center justify-center bg-tertiary dark:bg-secondary/40 overflow-hidden">
           <Image
-            className="absolute bottom-0 shadow-2xl"
-            src={project.image}
-            width={247}
-            height={250}
-            alt=""
+            src={project.image || "/placeholder-project.png"}
+            width={500}
+            height={300}
+            alt={project.name || "Project image"}
+            className="object-contain w-full h-full"
             priority
           />
         </div>
@@ -34,12 +40,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {project.category}
         </Badge>
       </CardHeader>
-      
+
       <CardContent className="px-8 py-6">
         <CardTitle className="mb-1">{project.name}</CardTitle>
-        <CardDescription className="text-lg">{project.description}</CardDescription>
+        <CardDescription className="text-lg font-">
+          {project.description}
+        </CardDescription>
       </CardContent>
-      
+
       <CardFooter className="px-8 flex justify-start">
         <div className="flex gap-x-4">
           {project.link && (
