@@ -50,7 +50,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </CardDescription>
       </CardContent>
 
-      <CardFooter className=" flex justify-start">
+      <CardFooter className="mt-auto flex justify-start">
         <div className="flex gap-x-4">
           {project.link && (
             <Link
