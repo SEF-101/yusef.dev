@@ -24,14 +24,14 @@ const projectData = [
   },
   {
     id: "3",
-    image: "",
-    category: ".NET",
-    name: "Homeland",
-    description: "A real estate rental website made with React, Tailwind & JavaScript.",
-    link: "https://beautiful-homeland.netlify.app/",
+    image: "/projectPics/gridai_pic.png",
+    category: "React",
+    name: "GridAI",
+    description: "A real-time power grid management platform built for utility operators, featuring AI-driven insights, interactive dashboards, and collaborative code editing. Developed with React, TypeScript, Go, and Python, it supports live data visualization, CRDT-based file editing, and scalable frontend architecture.",
+    link: "https://sddec25-17.sd.ece.iastate.edu/",
     github: "https://github.com/premvarma2002/Real-Estate",
   },
-  // Add more projects as needed
+  
 ];
 
 const uniqueCategories = [
