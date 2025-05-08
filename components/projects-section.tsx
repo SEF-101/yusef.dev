@@ -10,7 +10,6 @@ const projectData = [
     category: "Python",
     name: "SEF101's Video Compressor",
     description: "A video compressor made with Python and UI library customtkinter. Needs ffmpeg installed.",
-    link: "https://amazon-clone-ten-lemon.vercel.app/",
     github: "https://github.com/SEF-101/SEF101sVideoCompressor",
   },
   {
@@ -19,7 +18,6 @@ const projectData = [
     category: "Java",
     name: "GeoExplore",
     description: "A real-time city interaction app built in Java with WebSockets, REST APIs, and Google Maps. Enables hazard reporting, event sharing, and location tracking between citizens and city officials.",
-    link: "https://beautiful-homeland.netlify.app/",
     github: "https://github.com/SEF-101/GeoExplore",
   },
   {
@@ -29,7 +27,6 @@ const projectData = [
     name: "GridAI",
     description: "A real-time power grid management platform built for utility operators, featuring AI-driven insights, interactive dashboards, and collaborative code editing. Developed with React, TypeScript, Go, and Python, it supports live data visualization, CRDT-based file editing, and scalable frontend architecture.",
     link: "https://sddec25-17.sd.ece.iastate.edu/",
-    github: "https://github.com/premvarma2002/Real-Estate",
   },
   
 ];

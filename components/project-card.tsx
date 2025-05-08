@@ -14,8 +14,8 @@ import { Badge } from "./ui/badge";
 interface Project {
   id: string;
   image: string;
-  link: string;
-  github: string;
+  link?: string;
+  github?: string;
   category: string;
   name: string;
   description: string;
@@ -50,7 +50,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </CardDescription>
       </CardContent>
 
-      <CardFooter className="px-8 flex justify-start">
+      <CardFooter className=" flex justify-start">
         <div className="flex gap-x-4">
           {project.link && (
             <Link
