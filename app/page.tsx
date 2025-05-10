@@ -78,10 +78,10 @@ export default function Home() {
               >
                 <div className="flex flex-col items-center justify-center">
                   <h3 className="text-2xl font-bold text-center text-[var(--primary)] mb-10">
-                    Heres my social security number
+                    Insert daily favorite quote here
                   </h3>
                   <h3 className="text-2xl font-bold text-[var(--primary)]">
-                    581-30-0142
+                    quote here 
                   </h3>
                 </div>
               </ScratchToReveal>
