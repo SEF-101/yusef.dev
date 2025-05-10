@@ -4,8 +4,6 @@
 
 This website showcases my skills and introduces me to employers. It also serves as a platform to host subpages for friends and family in the future.
 
----
-
 ## Features
 
 ### Interactive UI Components
@@ -18,8 +16,6 @@ This website showcases my skills and introduces me to employers. It also serves 
 - **Organized Layout**: Projects are easy to browse
 - **Project Cards**: Includes images, descriptions, and links
 - **Category Badges**: Highlights the technologies used in each project
-
----
 
 ## Technologies Used
 
@@ -40,16 +36,12 @@ This website showcases my skills and introduces me to employers. It also serves 
 ### Icons
 - **Lucide React**: Customizable and scalable icons
 
----
-
 ## Project Structure
 
 ### Key Directories
 - **app/**: Main files for the site
 - **components/**: Reusable UI components
 - **public/**: Static assets like images
-
----
 
 ## Getting Started
 
