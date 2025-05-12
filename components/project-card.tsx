@@ -79,7 +79,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </CardFooter>
       <BorderBeam duration={8} size={300} className="from-transparent via-blue-500 to-transparent"/>
-      <BorderBeam duration={8} size={300} delay={4} className="from-transparent via-blue-500 to-transparent"/>
+      <BorderBeam duration={8} size={300} delay={3.5} className="from-transparent via-blue-500 to-transparent"/>
     </Card>
   );
 };
