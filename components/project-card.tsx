@@ -49,8 +49,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
       </CardHeader>
 
       <CardContent className="px-8 py-6">
-        <CardTitle className="mb-1">{project.name}</CardTitle>
-        <CardDescription className="text-lg font-">
+        <CardTitle className="mb-1 text-2xl">{project.name}</CardTitle>
+        <CardDescription className="text-lg text-white font-lato">
           {project.description}
         </CardDescription>
       </CardContent>

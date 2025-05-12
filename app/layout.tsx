@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Roboto } from "next/font/google";
+import { Anton, Roboto, Lato } from "next/font/google";
 import Navbar from "@/components/navbar";
 import "./globals.css";
 
@@ -16,6 +16,12 @@ const roboto = Roboto({
   weight: ["400", "700"], 
 });
 
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "SEF101",
   description: "SEF101 - A Portfolio Website",
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${anton.variable} ${roboto.variable}`}>
+    <html lang="en" className={`${anton.variable} ${roboto.variable} ${lato.variable}`}>
       <body className="flex flex-col min-h-screen bg-[var(--background)] text-[var(--primary)]">
         <Navbar />
         <main className="flex-grow">{children}</main>
