@@ -10,6 +10,7 @@ import {
 } from "./ui/card";
 import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { BorderBeam } from "./magicui/border-beam";
 
 interface Project {
   id: string;
@@ -23,7 +24,7 @@ interface Project {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <Card className="group overflow-hidden relative">
+    <Card className="group overflow-hidden relative border-accent">
       <CardHeader className="p-0 flex flex-col">
         <div className="px-5 pb-0.5">
           <Badge className="text-sm bg-accent text-primary">
@@ -77,6 +78,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
           )}
         </div>
       </CardFooter>
+      <BorderBeam duration={8} size={300} className="from-transparent via-blue-500 to-transparent"/>
+      <BorderBeam duration={8} size={300} delay={4} className="from-transparent via-blue-500 to-transparent"/>
     </Card>
   );
 };
