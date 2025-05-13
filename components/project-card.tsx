@@ -24,7 +24,7 @@ interface Project {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <Card className="group overflow-hidden relative border-accent">
+    <Card className="group overflow-hidden relative border-accent h-full flex flex-col">
       <CardHeader className="p-0 flex flex-col">
         <div className="px-5 pb-0.5">
           <Badge className="text-sm bg-accent text-primary">
@@ -49,7 +49,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </CardHeader>
 
-      <CardContent className="px-8 py-6">
+      <CardContent className="px-8 py-6 flex-grow">
         <CardTitle className="mb-1 text-2xl">{project.name}</CardTitle>
         <CardDescription className="text-lg text-white font-lato">
           {project.description}
