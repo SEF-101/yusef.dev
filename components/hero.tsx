@@ -1,5 +1,11 @@
 import { Meteors } from "@/components/magicui/meteors";
 import Image from "next/image";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Linkedin, Github } from "lucide-react"
 
 export default function Hero() {
@@ -43,13 +49,32 @@ export default function Hero() {
                             Software engineer building scalable systems and sleek interfaces.
                         </p>
 
-                        <div className="flex justify-center md:justify-start space-x-4">
-                            <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
-                                <Linkedin size={36} />
-                            </a>
-                            <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
-                                <Github size={36} />
-                            </a>
+                        <div className="flex justify-center md:justify-start space-x-4 pt-2">
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                                            <Linkedin size={36} />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom" className="bg-accent">
+                                        <p className="font-lato">View My LinkedIn</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                                            <Github size={36} />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom">
+                                        <p className="font-lato">View My GitHub</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
                         </div>
                     </div>
                 </div>

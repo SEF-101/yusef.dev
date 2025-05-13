@@ -8,6 +8,12 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Github, Link2Icon } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { BorderBeam } from "./magicui/border-beam";
@@ -59,22 +65,40 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <CardFooter className="mt-auto flex justify-start">
         <div className="flex gap-x-4">
           {project.link && (
-            <Link
-              target="_blank"
-              href={project.link}
-              className="w-[42px] h-[42px] rounded-full flex justify-center items-center"
-            >
-              <Link2Icon className="text-white h-5 w-5 hover:text-primary" />
-            </Link>
+            <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  target="_blank"
+                  href={project.link}
+                  className="w-[42px] h-[42px] rounded-full flex justify-center items-center"
+                >
+                  <Link2Icon className="text-white h-5 w-5 hover:text-primary" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent className= "text-white">
+                <p className="font-lato">Visit Project</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           )}
           {project.github && (
-            <Link
-              target="_blank"
-              href={project.github}
-              className="w-[42px] h-[42px] rounded-full flex justify-center items-center"
-            >
-              <Github className="text-white h-5 w-5 hover:text-primary" />
-            </Link>
+            <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  target="_blank"
+                  href={project.github}
+                  className="w-[42px] h-[42px] rounded-full flex justify-center items-center"
+                >
+                  <Github className="text-white h-5 w-5 hover:text-primary" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent className= "text-white">
+                <p className="font-lato">View GitHub Repository</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           )}
         </div>
       </CardFooter>
