@@ -1,6 +1,6 @@
 import { Meteors } from "@/components/magicui/meteors";
 import Image from "next/image";
-import {Linkedin, Github} from "lucide-react"
+import { Linkedin, Github } from "lucide-react"
 import { TechMarquee } from "./marquee-custom";
 
 export default function Hero() {
@@ -11,7 +11,7 @@ export default function Hero() {
                 <div className="absolute inset-0">
                     <Meteors />
                 </div>
-                
+
                 {/* main */}
                 <div className="flex flex-col md:flex-row items-center flex-grow px-8 py-12">
                     {/* image */}
@@ -25,7 +25,7 @@ export default function Hero() {
                             priority
                         />
                     </div>
-                    
+
                     {/* text */}
                     <div className="w-full md:w-2/3 space-y-4 md:ml-8 relative text-center md:text-left">
                         <h1 className="text-4xl md:text-6xl font-bold">
@@ -34,18 +34,17 @@ export default function Hero() {
                             </span>
                             <span className="block">
                                 I&apos;m Yu
-                                <span className="relative">
+                                <span className="relative group">
                                     <span className="text-[var(--primary)]">sef</span>
-                                    <span className="absolute text-xs text-[var(--primary)] bottom-4">101</span>
+                                    <span className="absolute text-xs text-[var(--primary)] bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">101</span>
                                 </span>
                             </span>
                         </h1>
-
-                        <p className="text-lg">
-                            A passionate developer skilled in modern web technologies.
+                        <p className="text-lg font-lato">
+                            Software engineer building scalable systems and sleek interfaces.
                         </p>
 
-                        <div className="flex justify-center md:justify-start space-x-4 pt-2">
+                        <div className="flex justify-center md:justify-start space-x-4">
                             <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
                                 <Linkedin size={36} />
                             </a>
