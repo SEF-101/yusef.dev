@@ -1,5 +1,4 @@
 import Hero from "@/components/hero";
-import { MorphingText } from "@/components/magicui/morphing-text";
 import About from "@/components/sections/about-section";
 import Contact from "@/components/sections/contact-section";
 import Experience from "@/components/sections/experience-section";
