@@ -29,13 +29,13 @@ export default function Navbar() {
           <NavigationMenu className="flex justify-center py-4">
             <NavigationMenuList className="flex gap-6">
               <NavigationMenuItem>
+                <NavigationMenuLink href="#experience" className="text-base">Experience</NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <NavigationMenuLink href="#projects" className="text-base">Projects</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="#about" className="text-base">About</NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#contact" className="text-base">Contact</NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

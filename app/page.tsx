@@ -14,7 +14,7 @@ export default function Home() {
       </section>
 
       {/* experience */}
-      <section id="technologies" className="py-16 bg-[var(--card)]">
+      <section id="experience" className="py-16 bg-[var(--card)]">
         <div className="container mx-auto px-4">
           <Experience />
         </div>
