@@ -55,11 +55,6 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-                
-                {/* marquee */}
-                <div className="w-full mt-auto">
-                    <TechMarquee />
-                </div>
             </section>
         </>
     );
