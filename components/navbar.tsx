@@ -59,6 +59,13 @@ export default function Navbar() {
         <div className="md:hidden bg-[var(--background)] py-4 px-4 shadow-md">
           <nav className="flex flex-col space-y-4">
             <a 
+              href="#experience" 
+              className="text-base hover:text-[var(--primary)] transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Experience
+            </a>
+            <a 
               href="#projects" 
               className="text-base hover:text-[var(--primary)] transition-colors"
               onClick={() => setMobileMenuOpen(false)}
@@ -71,13 +78,6 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               About
-            </a>
-            <a 
-              href="#contact" 
-              className="text-base hover:text-[var(--primary)] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
             </a>
           </nav>
         </div>
