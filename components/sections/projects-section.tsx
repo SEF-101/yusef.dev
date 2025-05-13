@@ -1,5 +1,6 @@
 import ProjectCard from "@/components/project-card";
 import { Marquee } from "@/components/magicui/marquee";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 const projectData = [
   {
@@ -51,9 +52,13 @@ const projectData = [
 export default function Projects() {
   return (
     <>
-      <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">
+    <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
+    <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">
         Projects
       </h2>
+
+    </BoxReveal>
+
       <Marquee className="py-4" pauseOnHover>
         {projectData.map((project) => (
           <div key={project.id} className="w-[280px] sm:w-[340px] md:w-[400px] lg:w-[450px] ">

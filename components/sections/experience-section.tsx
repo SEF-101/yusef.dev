@@ -4,6 +4,8 @@ import { Badge } from "../ui/badge";
 import { ArrowRight, Briefcase, School } from "lucide-react";
 import { BorderBeam } from "../magicui/border-beam";
 import { IconCloudTechnologies } from "../language-icons";
+import { BoxReveal } from "../magicui/box-reveal";
+import { WarpBackground } from "../magicui/warp-background";
 
 // experience
 const workExperience = {
@@ -46,9 +48,12 @@ const education = {
 export default function Experience() {
   return (
     <div className="relative">
-      <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6">Experience</h2>
+      <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
+        <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">Experience</h2>
+      </BoxReveal>
       
       <div className="relative w-full overflow-hidden">
+        
         <div className="relative space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 

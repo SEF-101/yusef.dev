@@ -1,7 +1,6 @@
 import { Meteors } from "@/components/magicui/meteors";
 import Image from "next/image";
 import { Linkedin, Github } from "lucide-react"
-import { TechMarquee } from "./marquee-custom";
 
 export default function Hero() {
     return (
