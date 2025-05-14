@@ -18,21 +18,21 @@ export default function Hero() {
                 </div>
 
                 {/* main */}
-                <div className="flex flex-col md:flex-row items-center flex-grow px-8 py-12">
+                <div className="flex flex-col md:flex-row items-center flex-grow px-8 py-12 relative z-10">
                     {/* image */}
-                    <div className="flex justify-center relative w-full md:w-1/3 mb-8 md:mb-0">
+                    <div className="flex justify-center relative w-full md:w-1/3 mb-8 md:mb-0 z-10">
                         <Image
                             src="/transparent.png"
                             alt="Yusef's profile picture"
                             width={500}
                             height={450}
-                            className="object-cover w-3/4 md:w-full"
+                            className="object-cover w-3/4 md:w-full relative"
                             priority
                         />
                     </div>
 
                     {/* text */}
-                    <div className="w-full md:w-2/3 space-y-4 md:ml-8 relative text-center md:text-left">
+                    <div className="w-full md:w-2/3 space-y-4 md:ml-8 relative text-center md:text-left z-10">
                         <h1 className="text-4xl md:text-6xl font-bold">
                             <span className="block relative">
                                 <span className="relative">Hi,</span>
