@@ -22,7 +22,7 @@ export default function Contact() {
                         </CardDescription>
                         <a
                             href="mailto:yusef8000@gmail.com"
-                            className="text-xl text-center text-[var(--primary)] hover:underline"
+                            className="text-xl text-center text-[var(--primary)] hover:underline break-all overflow-wrap-anywhere"
                         >
                             yusef8000@gmail.com
                         </a>
