@@ -24,8 +24,8 @@
   }
 
   :root {
-    --background: var(--color-background-light);
-    --foreground: #0B0B0E;
+    --background: var(--color-background-dark);
+    --foreground: #ffffff;
     --card: var(--color-surface);
     --card-foreground: var(--color-primary);
     --primary: var(--color-primary);
