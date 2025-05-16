@@ -23,8 +23,8 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "SEF101 | Yusef",
-  description: "SEF101 - A Portfolio Website",
+  title: "Yusef | SEF101",
+  description: "SEF101 - Yusef's Portfolio",
 };
 
 export default function RootLayout({
