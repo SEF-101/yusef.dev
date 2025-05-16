@@ -1,6 +1,10 @@
+"use client";
 import ProjectCard from "@/components/project-card";
 import { Marquee } from "@/components/magicui/marquee";
 import { BoxReveal } from "@/components/magicui/box-reveal";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Pause, Play } from "lucide-react";
 
 const projectData = [
   {
@@ -50,22 +54,37 @@ const projectData = [
 ];
 
 export default function Projects() {
+  const [isPaused, setIsPaused] = useState(false);
+
   return (
     <>
-    <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
-    <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">
-        Projects
-      </h2>
+      <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
+        <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">
+          Projects
+        </h2>
+      </BoxReveal>
 
-    </BoxReveal>
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-end mb-1">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={() => setIsPaused(!isPaused)}
+            aria-label={isPaused ? "Play projects scroll" : "Pause projects scroll"}
+            className="h-8 w-8 border-accent"
+          >
+            {isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+          </Button>
+        </div>
 
-      <Marquee className="py-4" pauseOnHover>
-        {projectData.map((project) => (
-          <div key={project.id} className="w-[280px] sm:w-[340px] md:w-[400px] lg:w-[450px] ">
-            <ProjectCard project={project} />
-          </div>
-        ))}
-      </Marquee>
+        <Marquee className="py-4" paused={isPaused} speed={1}>
+          {projectData.map((project) => (
+            <div key={project.id} className="w-[280px] sm:w-[340px] md:w-[400px] lg:w-[450px] ">
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </>
   );
 }
