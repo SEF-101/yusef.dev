@@ -24,6 +24,7 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   gradientColors = ["#A97CF8", "#F38CB8", "#FDCC92"],
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isScratching, setIsScratching] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -148,6 +149,7 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
 
   return (
     <motion.div
+      ref={containerRef}
       className={cn("relative select-none", className)}
       style={{
         width,
@@ -157,15 +159,15 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
       }}
       animate={controls}
     >
+      <div className="absolute inset-0 z-0">{children}</div>
       <canvas
         ref={canvasRef}
         width={width}
         height={height}
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-0 z-10"
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       ></canvas>
-      {children}
     </motion.div>
   );
 };
