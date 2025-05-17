@@ -24,7 +24,10 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: "Yusef | SEF101",
-  description: "SEF101 - Yusef's Portfolio",
+  metadataBase: new URL("https://sef101.com"),
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({
