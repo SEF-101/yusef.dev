@@ -4,19 +4,6 @@
 
 This website showcases my skills and introduces me to employers. It also serves as a platform to host subpages for friends and family in the future.
 
-## Features
-
-### Interactive UI Components
-- **3D Icon Cloud**: Highlights the technologies I use
-- **Scratch-to-Reveal Elements**: Adds a fun, interactive touch
-- **Animated Backgrounds**: Enhances visual appeal
-- **Tech Skills Marquee**: Displays my skills in a scrolling format
-
-### Project Showcase
-- **Organized Layout**: Projects are easy to browse
-- **Project Cards**: Includes images, descriptions, and links
-- **Category Badges**: Highlights the technologies used in each project
-
 ## Technologies Used
 
 ### Framework
@@ -41,7 +28,7 @@ This website showcases my skills and introduces me to employers. It also serves 
 ### Key Directories
 - **app/**: Main files for the site
 - **components/**: Reusable UI components
-- **public/**: Static assets like images
+- **public/**: Static assets
 
 ## Getting Started
 
