@@ -25,26 +25,26 @@ const workExperience = {
 };
 
 const education = {
-    degree: "Bachelor of Science, Software Engineering",
-    institution: "Iowa State University",
-    location: "Ames, IA",
-    graduationDate: "Expected Dec 2025",
-    courses: [
-      "Software Dev Practices",
-      "Advanced Programming",
-      "UI Development",
-      "Operating Systems",
-      "Computer Architecture",
-      "Object-Oriented Programming",
-      "Data Structures",
-      "Algorithms",
-      "Databases",
-      "Software Testing",
-      "Software Architecture",
-      "Requirements Engineering",
-      "Security & Networks"
-    ]
-  };
+  degree: "Bachelor of Science, Software Engineering",
+  institution: "Iowa State University",
+  location: "Ames, IA",
+  graduationDate: "Expected Dec 2025",
+  courses: [
+    "Software Dev Practices",
+    "Advanced Programming",
+    "UI Development",
+    "Operating Systems",
+    "Computer Architecture",
+    "Object-Oriented Programming",
+    "Data Structures",
+    "Algorithms",
+    "Databases",
+    "Software Testing",
+    "Software Architecture",
+    "Requirements Engineering",
+    "Security & Networks"
+  ]
+};
 
 const technicalSkills = [
   { name: "TypeScript", icon: "typescript" },
@@ -92,21 +92,21 @@ export default function Experience() {
       <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
         <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">Experience</h2>
       </BoxReveal>
-      
+
       <div className="relative w-full overflow-hidden">
-        
+
         <div className="relative space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* education */}
             <div className="relative overflow-hidden bg-black/40 border border-primary/30 rounded-xl p-6 h-full">
               <BorderBeam duration={10} size={400} delay={4} className="from-transparent via-green-500/30 to-transparent" />
-              
+
               <div className="flex items-center gap-3 mb-4">
                 <School size={24} />
                 <h3 className="text-2xl font-bold">Education</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <h4 className="text-xl text-blue-300">{education.degree}</h4>
@@ -114,13 +114,13 @@ export default function Experience() {
                   <div className="text-sm font-lato text-blue-200/80">{education.location}</div>
                   <div className="mt-2 text-blue-400">{education.graduationDate}</div>
                 </div>
-                
+
                 <div className="pt-4 border-t border-gray-700/50">
                   <h5 className="text-xl mb-3">Relevant Coursework</h5>
                   <div className="flex flex-wrap gap-2">
                     {education.courses.map((course, idx) => (
-                      <Badge 
-                        key={idx} 
+                      <Badge
+                        key={idx}
                         className="bg-blue-900/30 font-lato"
                       >
                         {course}
@@ -130,28 +130,29 @@ export default function Experience() {
                 </div>
               </div>
             </div>
-            
+
             {/* technical skills */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-blue-900/20 via-black to-blue-900/20 rounded-xl p-6 border border-blue-500/20 h-full">
+            <div className="relative overflow-hidden bg-gradient-to-r from-blue-900/20 via-black to-blue-900/20 rounded-xl p-6 border 
+              border-primary/20 h-full">
               <div className="flex items-center gap-2 mb-4">
                 <Cpu className="flex-shrink-0" size={24} />
                 <h3 className="text-2xl font-bold">Technical Skills</h3>
                 <p className="text-gray-400 font-lato">{showGridView ? 'List of languages & technologies I\'ve worked with' : 'Visualization of languages & technologies I\'ve worked with'}</p>
               </div>
-              
+
               <div className="relative h-[300px] md:h-[320px] w-full">
                 {showGridView ? (
                   <div className="h-full overflow-y-auto pr-2">
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {technicalSkills.map((skill) => (
-                        <div 
-                          key={skill.icon} 
+                        <div
+                          key={skill.icon}
                           className="flex items-center gap-2 p-2 rounded-md bg-blue-900/20 hover:bg-blue-900/30 transition-colors"
                         >
-                          <img 
-                            src={`https://cdn.simpleicons.org/${skill.icon}/${skill.icon}`} 
-                            alt={skill.name} 
-                            className="w-6 h-6 object-contain" 
+                          <img
+                            src={`https://cdn.simpleicons.org/${skill.icon}/${skill.icon}`}
+                            alt={skill.name}
+                            className="w-6 h-6 object-contain"
                           />
                           <span className="text-sm">{skill.name}</span>
                         </div>
@@ -161,21 +162,21 @@ export default function Experience() {
                 ) : (
                   <IconCloudTechnologies />
                 )}
-                
-                <Button 
+
+                <Button
                   onClick={() => setShowGridView(!showGridView)}
                   size="sm"
                   variant="outline"
-                  className="absolute bottom-2 left-2 bg-black/60 border-blue-500/50 hover:bg-black/80"
+                  className="absolute bottom-2 left-2 bg-black/60 border-primary/50 hover:bg-accent"
                 >
                   {showGridView ? (
                     <>
-                      <Globe className="mr-1 h-4 w-4" /> 
+                      <Globe className="mr-1 h-4 w-4" />
                       Show 3D Cloud
                     </>
                   ) : (
                     <>
-                      <List className="mr-1 h-4 w-4" /> 
+                      <List className="mr-1 h-4 w-4" />
                       Show List View
                     </>
                   )}
@@ -183,30 +184,30 @@ export default function Experience() {
               </div>
             </div>
           </div>
-          
+
           {/* work experience */}
           <div className="relative overflow-hidden bg-black/40 border border-primary/30 rounded-xl p-6">
-            <BorderBeam duration={10} size={400} className="from-transparent via-blue-500/30 to-transparent" />
-            
+            <BorderBeam duration={10} size={400} className="from-transparent via-primary/30 to-transparent" />
+
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="lg:w-1/3">
                 <div className="flex items-center gap-3 mb-4">
                   <Briefcase size={24} />
                   <h3 className="text-2xl font-bold">Work Experience</h3>
                 </div>
-                
+
                 <div className="mb-4">
                   <h4 className="text-xl text-blue-300">{workExperience.title}</h4>
                   <div className="text-lg mt-1">{workExperience.company}</div>
                   <div className="text-sm font-lato text-blue-200/80">{workExperience.location}</div>
                   <div className="mt-1 text-blue-400">{workExperience.period}</div>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {workExperience.skills.map((skill, idx) => (
-                    <Badge 
-                      key={idx} 
-                      variant="secondary" 
+                    <Badge
+                      key={idx}
+                      variant="secondary"
                       className="bg-blue-900/30"
                     >
                       {skill}
@@ -219,8 +220,8 @@ export default function Experience() {
                 <h4 className="text-xl mb-4">Responsibilities & Achievements</h4>
                 <ul className="space-y-3">
                   {workExperience.description.map((item, idx) => (
-                    <motion.li 
-                      key={idx} 
+                    <motion.li
+                      key={idx}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
