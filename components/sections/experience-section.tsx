@@ -136,7 +136,7 @@ export default function Experience() {
               <div className="flex items-center gap-2 mb-4">
                 <Cpu className="flex-shrink-0" size={24} />
                 <h3 className="text-2xl font-bold">Technical Skills</h3>
-                <p className="text-gray-400 font-lato">Visualization of languages & technologies I've worked with</p>
+                <p className="text-gray-400 font-lato">{showGridView ? 'List of languages & technologies I\'ve worked with' : 'Visualization of languages & technologies I\'ve worked with'}</p>
               </div>
               
               <div className="relative h-[300px] md:h-[320px] w-full">
