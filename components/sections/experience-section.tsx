@@ -78,6 +78,7 @@ const technicalSkills = [
   { name: "GitLab", icon: "gitlab" },
   { name: "Postman", icon: "postman" },
   { name: "Android Studio", icon: "androidstudio" },
+  {name: "Expo", icon: "expo"},
   { name: "Figma", icon: "figma" },
   { name: "Swagger", icon: "swagger" },
   { name: "MongoDB", icon: "mongodb" },
@@ -86,7 +87,7 @@ const technicalSkills = [
 
 // change black icons to white for better visibility
 const getIconColor = (iconName: string) => {
-  const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github"];
+  const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github", "amazonwebservices", "expo"];
   return whiteIcons.includes(iconName) ? "FFFFFF" : iconName;
 };
 

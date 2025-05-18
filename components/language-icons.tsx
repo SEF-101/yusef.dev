@@ -2,25 +2,25 @@ import { IconCloud } from "@/components/magicui/icon-cloud";
 
 const slugs = [
   "typescript",
+  "socket.io",
   "javascript",
   "java",
   "react",
+  "expo",
   "python",
   "android",
   "c",
+  "amazonwebservices",
   "c++",
   "html5",
   "css3",
   "tailwindcss",
   "nodedotjs",
-  "express",
   "nextdotjs",
-  "amazonaws",
   "postgresql",
   "firebase",
   "nginx",
   "vercel",
-  "socket.io",
   "testinglibrary",
   "bootstrap",
   "jest",
@@ -28,20 +28,21 @@ const slugs = [
   "docker",
   "git",
   "jira",
-  "github",
   "gitlab",
   "postman",
+  "github",
   "androidstudio",
   "figma",
   "swagger",
   "mongodb",
+  "express",
   "mysql",
 ];
 
 // change black icons to white for better visibility
 const getIconColor = (iconName: string) => {
-const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github"];
-return whiteIcons.includes(iconName) ? "FFFFFF" : iconName;
+  const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github", "amazonwebservices", "expo"];
+  return whiteIcons.includes(iconName) ? "FFFFFF" : iconName;
 };
 
 export function IconCloudTechnologies() {
