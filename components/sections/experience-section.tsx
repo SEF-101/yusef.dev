@@ -158,6 +158,7 @@ export default function Experience() {
                         </div>
                       ))}
                     </div>
+                    <div className="h-15"></div>
                   </div>
                 ) : (
                   <IconCloudTechnologies />
