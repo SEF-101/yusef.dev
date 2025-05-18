@@ -38,9 +38,15 @@ const slugs = [
   "mysql",
 ];
 
+// change black icons to white for better visibility
+const getIconColor = (iconName: string) => {
+const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github"];
+return whiteIcons.includes(iconName) ? "FFFFFF" : iconName;
+};
+
 export function IconCloudTechnologies() {
   const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+    (slug) => `https://cdn.simpleicons.org/${slug}/${getIconColor(slug)}`,
   );
 
   return (

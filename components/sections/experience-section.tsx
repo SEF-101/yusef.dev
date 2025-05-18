@@ -84,6 +84,12 @@ const technicalSkills = [
   { name: "MySQL", icon: "mysql" }
 ];
 
+// change black icons to white for better visibility
+const getIconColor = (iconName: string) => {
+  const whiteIcons = ["nextdotjs", "vercel", "express", "socket.io", "github"];
+  return whiteIcons.includes(iconName) ? "FFFFFF" : iconName;
+};
+
 export default function Experience() {
   const [showGridView, setShowGridView] = useState(false);
 
@@ -150,7 +156,7 @@ export default function Experience() {
                           className="flex items-center gap-2 p-2 rounded-md bg-blue-900/20 hover:bg-blue-900/30 transition-colors"
                         >
                           <img
-                            src={`https://cdn.simpleicons.org/${skill.icon}/${skill.icon}`}
+                            src={`https://cdn.simpleicons.org/${skill.icon}/${getIconColor(skill.icon)}`}
                             alt={skill.name}
                             className="w-6 h-6 object-contain"
                           />
