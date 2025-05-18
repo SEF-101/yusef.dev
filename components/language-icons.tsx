@@ -24,6 +24,7 @@ const slugs = [
   "testinglibrary",
   "bootstrap",
   "jest",
+  ".net",
   "cypress",
   "docker",
   "git",
