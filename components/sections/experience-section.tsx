@@ -1,11 +1,12 @@
 "use client";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Badge } from "../ui/badge";
-import { ArrowRight, Briefcase, School } from "lucide-react";
+import { ArrowRight, Briefcase, School, Globe, List, Cpu } from "lucide-react";
 import { BorderBeam } from "../magicui/border-beam";
 import { IconCloudTechnologies } from "../language-icons";
 import { BoxReveal } from "../magicui/box-reveal";
-import { WarpBackground } from "../magicui/warp-background";
+import { Button } from "../ui/button";
 
 // experience
 const workExperience = {
@@ -45,7 +46,47 @@ const education = {
     ]
   };
 
+const technicalSkills = [
+  { name: "TypeScript", icon: "typescript" },
+  { name: "JavaScript", icon: "javascript" },
+  //{ name: "Java", icon: "java" },
+  { name: "React", icon: "react" },
+  { name: "Python", icon: "python" },
+  { name: "Android", icon: "android" },
+  { name: "C", icon: "c" },
+  { name: "C++", icon: "c++" },
+  { name: "HTML5", icon: "html5" },
+  { name: "CSS3", icon: "css3" },
+  { name: "Tailwind CSS", icon: "tailwindcss" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "Express", icon: "express" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "AWS", icon: "amazonwebservices" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Firebase", icon: "firebase" },
+  { name: "Nginx", icon: "nginx" },
+  { name: "Vercel", icon: "vercel" },
+  { name: "Socket.IO", icon: "socket.io" },
+  { name: "React Testing Library", icon: "testinglibrary" },
+  { name: "Bootstrap", icon: "bootstrap" },
+  { name: "Jest", icon: "jest" },
+  { name: "Cypress", icon: "cypress" },
+  { name: "Docker", icon: "docker" },
+  { name: "Git", icon: "git" },
+  { name: "Jira", icon: "jira" },
+  { name: "GitHub", icon: "github" },
+  { name: "GitLab", icon: "gitlab" },
+  { name: "Postman", icon: "postman" },
+  { name: "Android Studio", icon: "androidstudio" },
+  { name: "Figma", icon: "figma" },
+  { name: "Swagger", icon: "swagger" },
+  { name: "MongoDB", icon: "mongodb" },
+  { name: "MySQL", icon: "mysql" }
+];
+
 export default function Experience() {
+  const [showGridView, setShowGridView] = useState(false);
+
   return (
     <div className="relative">
       <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
@@ -62,7 +103,7 @@ export default function Experience() {
               <BorderBeam duration={10} size={400} delay={4} className="from-transparent via-green-500/30 to-transparent" />
               
               <div className="flex items-center gap-3 mb-4">
-                <School className="text-primary" size={24} />
+                <School size={24} />
                 <h3 className="text-2xl font-bold">Education</h3>
               </div>
               
@@ -92,13 +133,53 @@ export default function Experience() {
             
             {/* technical skills */}
             <div className="relative overflow-hidden bg-gradient-to-r from-blue-900/20 via-black to-blue-900/20 rounded-xl p-6 border border-blue-500/20 h-full">
-              <div className="mb-4 text-center">
+              <div className="flex items-center gap-2 mb-4">
+                <Cpu className="flex-shrink-0" size={24} />
                 <h3 className="text-2xl font-bold">Technical Skills</h3>
-                <p className="text-gray-400 font-lato">Interactive visualization of languages & technologies I've worked with</p>
+                <p className="text-gray-400 font-lato">Visualization of languages & technologies I've worked with</p>
               </div>
               
-              <div className="h-[300px] md:h-[320px] w-full">
-                <IconCloudTechnologies />
+              <div className="relative h-[300px] md:h-[320px] w-full">
+                {showGridView ? (
+                  <div className="h-full overflow-y-auto pr-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {technicalSkills.map((skill) => (
+                        <div 
+                          key={skill.icon} 
+                          className="flex items-center gap-2 p-2 rounded-md bg-blue-900/20 hover:bg-blue-900/30 transition-colors"
+                        >
+                          <img 
+                            src={`https://cdn.simpleicons.org/${skill.icon}/${skill.icon}`} 
+                            alt={skill.name} 
+                            className="w-6 h-6 object-contain" 
+                          />
+                          <span className="text-sm">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <IconCloudTechnologies />
+                )}
+                
+                <Button 
+                  onClick={() => setShowGridView(!showGridView)}
+                  size="sm"
+                  variant="outline"
+                  className="absolute bottom-2 left-2 bg-black/60 border-blue-500/50 hover:bg-black/80"
+                >
+                  {showGridView ? (
+                    <>
+                      <Globe className="mr-1 h-4 w-4" /> 
+                      Show 3D Cloud
+                    </>
+                  ) : (
+                    <>
+                      <List className="mr-1 h-4 w-4" /> 
+                      Show List View
+                    </>
+                  )}
+                </Button>
               </div>
             </div>
           </div>
@@ -110,7 +191,7 @@ export default function Experience() {
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="lg:w-1/3">
                 <div className="flex items-center gap-3 mb-4">
-                  <Briefcase className="text-primary" size={24} />
+                  <Briefcase size={24} />
                   <h3 className="text-2xl font-bold">Work Experience</h3>
                 </div>
                 
