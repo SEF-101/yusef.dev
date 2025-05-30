@@ -44,48 +44,14 @@ export default function HubNavbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/hub" className="text-base">
-                    Dashboard
+                    Hub Home
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <div className="relative group">
-                  <button className="text-base flex items-center gap-1">
-                    Guides <ChevronDown className="h-4 w-4" />
-                  </button>
-                  <div className="absolute left-0 top-full mt-2 p-2 bg-[var(--background)] shadow-lg rounded-md hidden group-hover:block w-48">
-                    {" "}
-                    <Link
-                      href="/hub/guides#vpn"
-                      className="block py-2 px-3 hover:bg-[var(--accent)]/10 rounded transition-colors"
-                    >
-                      VPN Connection
-                    </Link>
-                    <Link
-                      href="/hub/guides#plex"
-                      className="block py-2 px-3 hover:bg-[var(--accent)]/10 rounded transition-colors"
-                    >
-                      Plex Media
-                    </Link>
-                    <Link
-                      href="/hub/guides#files"
-                      className="block py-2 px-3 hover:bg-[var(--accent)]/10 rounded transition-colors"
-                    >
-                      File Access
-                    </Link>
-                    <Link
-                      href="/hub/guides#troubleshooting"
-                      className="block py-2 px-3 hover:bg-[var(--accent)]/10 rounded transition-colors"
-                    >
-                      Troubleshooting
-                    </Link>
-                  </div>
-                </div>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/" className="text-base">
-                    Back to Main Site
+                    View My Portfolio
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>

@@ -42,76 +42,12 @@ export default function ServerConnectPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = "http://100.102.224.18:7745/favicon.svg"; // must be a valid, reachable asset
-    img.onload = () => setIsConnected(true);
-    img.onerror = () => setIsConnected(false);
-
-    // Check hash on load for direct section navigation
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  }, []);
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
     <div
       className="min-h-screen bg-gradient-to-b from-background to-black/80 text-white  px-4 sm:px-6"
       ref={topRef}
     >
       <div className="max-w-4xl mx-auto">
-        {" "}
-        {/* connection status */}
-        {isConnected !== null && (
-          <Card
-            className={`mb-8 border ${
-              isConnected
-                ? "bg-green-900/20 border-green-500/50"
-                : "bg-red-900/20 border-red-500/50"
-            }`}
-          >
-            <CardContent className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div
-                  className={`w-3 h-3 rounded-full ${
-                    isConnected ? "bg-green-500" : "bg-red-500"
-                  }`}
-                ></div>
-                <span className="font-medium">
-                  {isConnected
-                    ? "You are connected to the VPN!"
-                    : "You are not connected"}
-                </span>
-              </div>
-              {!isConnected && (
-                <Button
-                  variant="default"
-                  size="sm"
-                  asChild
-                  className="bg-primary hover:bg-primary/80"
-                >
-                  <a
-                    href="https://tailscale.com/download"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Get Tailscale
-                  </a>
-                </Button>
-              )}
-            </CardContent>
-          </Card>
-        )}
         <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 text-center">
             Yusef's Server Guide

@@ -1,7 +1,7 @@
 import HubNavbar from "@/components/navbars/hub-navbar";
 
 export const metadata = {
-  title: "SEF101 Resource Center",
+  title: "SEF's Hub",
 };
 
 export default function FamilyLayout({
