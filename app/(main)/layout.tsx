@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/navbar";
+import MainNavbar from "@/components/navbars/main-navbar";
 
 export default function MainPageLayout({
   children,
@@ -8,7 +8,7 @@ export default function MainPageLayout({
 }) {
   return (
     <>
-      <Navbar />
+      <MainNavbar />
       {children}
     </>
   );

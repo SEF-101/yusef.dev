@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Anton, Roboto, Lato } from "next/font/google";
-import Navbar from "@/components/navbar";
 import "./globals.css";
 
 
@@ -34,11 +33,9 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
-  return (
+}) {  return (
     <html lang="en" className={`${anton.variable} ${roboto.variable} ${lato.variable}`}>
       <body className="flex flex-col min-h-screen bg-[var(--background)] text-[var(--primary)]">
-        <Navbar />
         <main className="flex-grow">{children}</main>
       </body>
     </html>
