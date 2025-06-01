@@ -34,23 +34,22 @@ export default function HubNavbar() {
             className="text-2xl ml-1" 
             colors={["#3B82F6", "#4C51BF", "#9370DB"]}
           >
-            Hub
+            Support
           </AuroraText>
         </Link>
 
         <div className="hidden md:block">
           <NavigationMenu className="flex justify-center py-4">
-            <NavigationMenuList className="flex gap-6">
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/hub" className="text-base">
+            <NavigationMenuList className="flex gap-6">              <NavigationMenuItem>
+                <NavigationMenuLink asChild className="text-lg">
+                  <Link href="/hub">
                     Hub Home
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/" className="text-base">
+                <NavigationMenuLink className="text-lg">
+                  <Link href="/">
                     View My Portfolio
                   </Link>
                 </NavigationMenuLink>
