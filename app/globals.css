@@ -108,3 +108,13 @@
     @apply border-[var(--border)] outline-[var(--ring)]/50;
   }
 }
+
+.prose {
+  --tw-prose-headings: #3B82F6; /* Tailwind blue-500 */
+}
+
+.fumadocs-content p,
+.fumadocs-content li,
+.fumadocs-content a {
+  font-family: var(--font-roboto);
+}
