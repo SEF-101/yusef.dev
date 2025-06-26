@@ -6,7 +6,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Linkedin, Github } from "lucide-react"
+import { Linkedin, Github , FileUser } from "lucide-react"
 
 export default function Hero() {
     return (
@@ -72,6 +72,19 @@ export default function Hero() {
                                     </TooltipTrigger>
                                     <TooltipContent side="bottom">
                                         <p className="font-lato">View My GitHub</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <a href="/resume/Yusef_Harb_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                                            <FileUser size={36} />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom">
+                                        <p className="font-lato">View My Resume</p>
                                     </TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
