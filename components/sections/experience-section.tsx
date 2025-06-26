@@ -9,20 +9,36 @@ import { BoxReveal } from "../magicui/box-reveal";
 import { Button } from "../ui/button";
 
 // experience
-const workExperience = {
-  title: "Senior Technician",
-  company: "Iowa State University ITS Endpoint",
-  location: "Ames, IA",
-  period: "Oct 2022 – Present",
-  description: [
-    "Lead team of 12 student technicians, optimizing daily operations and workflow efficiency",
-    "Troubleshoot complex IT issues remotely and onsite for university employees",
-    "Manage IT equipment setup, imaging, and lifecycle using MECM and Active Directory",
-    "Develop training materials and mentor new hires to enhance technical skills",
-    "Coordinate equipment installation and repairs across campus facilities"
-  ],
-  skills: ["MECM", "Active Directory", "Team Leadership", "Technical Support", "Windows Administration", "Software/Hardware Troubleshooting"]
-};
+const workExperiences = [
+  {
+    title: "Senior Technician",
+    company: "Iowa State University ITS Endpoint",
+    location: "Ames, IA",
+    period: "Oct 2022 – Present",
+    description: [
+      "Lead team of 12 student technicians, optimizing daily operations and workflow efficiency",
+      "Troubleshoot complex IT issues remotely and onsite for university employees",
+      "Manage IT equipment setup, imaging, and lifecycle using MECM and Active Directory",
+      "Develop training materials and mentor new hires to enhance technical skills",
+      "Coordinate equipment installation and repairs across campus facilities"
+    ],
+    skills: ["MECM", "Active Directory", "Team Leadership", "Technical Support", "Windows Administration", "Software/Hardware Troubleshooting"]
+  },
+  {
+    title: "Software Developer – Summer PT Intern",
+    company: "Automated Code Generation, Inc.",
+    location: "Remote / Ames, IA",
+    period: "May 2025 – Present",
+    description: [
+      "First hire at an early-stage startup building a video analytics platform for AI-powered media workflows.",
+      "Collaborate directly with founders in Agile to define product direction and technical strategy.",
+      "Design and implement dynamic UI features in Expo/React Native with TypeScript, including navigation and video playback.",
+      "Integrate frontend with Django backend and AWS S3 for secure media delivery and structured content loading.",
+      "Contribute across the full stack, balancing UI development with backend/API integration."
+    ],
+    skills: ["Expo", "React Native", "TypeScript", "Django", "Playwright" ,"AWS", "UI/UX Design", "Agile", "GitHub Issues", "Full Stack Development"]
+  }
+];
 
 const education = {
   degree: "Bachelor of Science, Software Engineering",
@@ -197,50 +213,61 @@ export default function Experience() {
           {/* work experience */}
           <div className="relative overflow-hidden bg-black/40 border border-primary/30 rounded-xl p-6">
             <BorderBeam duration={10} size={400} className="from-transparent via-primary/30 to-transparent" />
-
-            <div className="flex flex-col lg:flex-row gap-8">
-              <div className="lg:w-1/3">
-                <div className="flex items-center gap-3 mb-4">
-                  <Briefcase size={24} />
-                  <h3 className="text-2xl font-bold">Work Experience</h3>
-                </div>
-
-                <div className="mb-4">
-                  <h4 className="text-xl text-blue-300">{workExperience.title}</h4>
-                  <div className="text-lg mt-1">{workExperience.company}</div>
-                  <div className="text-sm font-lato text-blue-200/80">{workExperience.location}</div>
-                  <div className="mt-1 text-blue-400">{workExperience.period}</div>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {workExperience.skills.map((skill, idx) => (
-                    <Badge
-                      key={idx}
-                      variant="secondary"
-                      className="bg-blue-900/30"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              <div className="lg:w-2/3 border-l-0 lg:border-l border-gray-700 lg:pl-8">
-                <h4 className="text-xl mb-4">Responsibilities & Achievements</h4>
-                <ul className="space-y-3">
-                  {workExperience.description.map((item, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <ArrowRight className="text-primary mt-1 flex-shrink-0" size={18} />
-                      <span className="font-lato text-gray-400">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+            <div className="mb-8 flex items-center gap-3">
+              <Briefcase size={24} />
+              <h3 className="text-2xl font-anton">Work Experience</h3>
+            </div>
+            <div className="relative">
+              {/* Timeline vertical line */}
+              <div
+                className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-700/70 via-primary/60 to-blue-700/70 rounded-full pointer-events-none hidden md:block"
+                style={{ zIndex: 0 }}
+              ></div>
+              <div className="flex flex-col gap-16">
+                {[...workExperiences].reverse().map((exp, idx) => (
+                  <div key={idx} className="relative flex flex-col md:flex-row md:items-start gap-6 md:gap-12 group">
+                    {/* Timeline dot */}
+                    <div className="absolute left-2 md:left-4 top-2 md:top-6 w-6 h-6 flex items-center justify-center z-10 hidden md:flex">
+                      <span className="block w-4 h-4 rounded-full border-4 border-primary bg-blue-950 shadow-lg group-hover:scale-110 transition-transform duration-200"></span>
+                    </div>
+                    <div className="md:ml-16 w-full md:w-1/3">
+                      <div className="mb-4">
+                        <h4 className="text-xl text-blue-300">{exp.title}</h4>
+                        <div className="text-lg mt-1 font-anton">{exp.company}</div>
+                        <div className="text-sm font-lato text-blue-200/80">{exp.location}</div>
+                        <div className="mt-1 text-blue-400">{exp.period}</div>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {exp.skills.map((skill, idx2) => (
+                          <Badge
+                            key={idx2}
+                            variant="secondary"
+                            className="bg-blue-900/30 text-xs font-lato"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="w-full md:w-2/3 border-l-0 md:border-l border-gray-700 md:pl-8">
+                      <h4 className="text-xl mb-4">Responsibilities & Achievements</h4>
+                      <ul className="space-y-3">
+                        {exp.description.map((item, idx3) => (
+                          <motion.li
+                            key={idx3}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx3 * 0.1 }}
+                            className="flex items-start gap-3"
+                          >
+                            <ArrowRight className="text-primary mt-1 flex-shrink-0" size={18} />
+                            <span className="font-lato text-gray-400">{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
