@@ -25,7 +25,7 @@ const workExperiences = [
     skills: ["MECM", "Active Directory", "Team Leadership", "Technical Support", "Windows Administration", "Software/Hardware Troubleshooting"]
   },
   {
-    title: "Software Developer – Summer PT Intern",
+    title: "Software Developer",
     company: "Automated Code Generation, Inc.",
     location: "Remote / Ames, IA",
     period: "May 2025 – Present",
