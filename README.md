@@ -1,4 +1,4 @@
-# SEF101.com | Portfolio Site for Yusef
+# yusef.dev | Portfolio Site for Yusef
 
 ![Site Preview](./public/pictureOfSite.png)
 
