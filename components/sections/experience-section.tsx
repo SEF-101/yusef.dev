@@ -16,7 +16,7 @@ const workExperiences = [
     location: "Ames, IA",
     period: "Oct 2022 – Present",
     description: [
-      "Lead team of 12 student technicians, optimizing daily operations and workflow efficiency",
+      "Act as a bridge between student technicians and admins, sharing updates and supporting workflows",
       "Troubleshoot complex IT issues remotely and onsite for university employees",
       "Manage IT equipment setup, imaging, and lifecycle using MECM and Active Directory",
       "Develop training materials and mentor new hires to enhance technical skills",
