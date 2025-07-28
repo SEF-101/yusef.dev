@@ -2,7 +2,7 @@
 
 ![Site Preview](./public/pictureOfSite.png)
 
-This website showcases my skills and introduces me to employers. It also serves as a platform to host subpages for friends and family in the future.
+A personal portfolio showcasing my software projects, technical background, and career goals.
 
 ## Technologies Used
 
