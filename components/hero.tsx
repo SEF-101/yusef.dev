@@ -38,9 +38,9 @@ export default function Hero() {
                                 <span className="relative">Hi,</span>
                             </span>
                             <span className="block">
-                                I&apos;m Yu
+                                I&apos;m 
                                 <span className="relative group">
-                                    <span className="text-[var(--primary)]">sef</span>
+                                    <span className="text-[var(--primary)]"> Yusef</span>
                                     <span className="absolute text-xs text-[var(--primary)] bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">101</span>
                                 </span>
                             </span>

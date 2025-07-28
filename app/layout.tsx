@@ -23,8 +23,8 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Yusef | SEF101",
-  metadataBase: new URL("https://sef101.com"),
+  title: "Yusef | yusef.dev",
+  metadataBase: new URL("https://yusef.dev"),
   icons: {
     icon: "/favicon.ico",
   }

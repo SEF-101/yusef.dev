@@ -11,10 +11,10 @@ const projectData = [
     id: "1",
     image: "/pictureOfSite.png",
     category: "Next.js",
-    name: "SEF101.com | Yusef's Portfolio",
+    name: "yusef.dev | Yusef's Portfolio",
     description:
       "This very website you're exploring! Built with Next.js, TypeScript, and styled using Tailwind CSS with shadcn/ui components. Features interactive UI elements from Magic UI library. Showcases responsive design, smooth animations, and modern component architecture.",
-    github: "https://github.com/SEF-101/sef101.com"
+    github: "https://github.com/SEF-101/yusef.dev"
   },
   {
     id: "2",
