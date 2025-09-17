@@ -77,7 +77,6 @@ const technicalSkills = [
   { name: "Node.js", icon: "nodedotjs" },
   { name: "Express", icon: "express" },
   { name: "Next.js", icon: "nextdotjs" },
-  { name: "AWS", icon: "amazonwebservices" },
   { name: "PostgreSQL", icon: "postgresql" },
   { name: "Firebase", icon: "firebase" },
   { name: "Nginx", icon: "nginx" },
@@ -99,7 +98,8 @@ const technicalSkills = [
   { name: "Figma", icon: "figma" },
   { name: "Swagger", icon: "swagger" },
   { name: "MongoDB", icon: "mongodb" },
-  { name: "MySQL", icon: "mysql" }
+  { name: "MySQL", icon: "mysql" },
+  { name: "Swift", icon: "swift" }
 ];
 
 // change black icons to white for better visibility

@@ -9,8 +9,7 @@ const slugs = [
   "expo",
   "python",
   "android",
-  "c",
-  "amazonwebservices",
+  "aws",
   "c++",
   "html5",
   "css3",
@@ -38,6 +37,8 @@ const slugs = [
   "mongodb",
   "express",
   "mysql",
+  "swift",
+  "c",
 ];
 
 // change black icons to white for better visibility
