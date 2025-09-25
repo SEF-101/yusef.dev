@@ -21,10 +21,10 @@ export default function Contact() {
                             Feel free to reach out to me via email. I'd love to hear from you!
                         </CardDescription>
                         <a
-                            href="mailto:yusef8000@gmail.com"
+                            href="mailto:contact@yusef.dev"
                             className="text-xl text-center text-[var(--primary)] hover:underline break-all overflow-wrap-anywhere"
                         >
-                            yusef8000@gmail.com
+                            contact@yusef.dev
                         </a>
                     </CardContent>
                 </Card>
