@@ -49,11 +49,11 @@ export default function Hero() {
                             Software engineer building scalable systems and sleek interfaces.
                         </p>
 
-                        <div className="flex justify-center md:justify-start space-x-4 pt-2">
+                        <div className="flex justify-center md:justify-start space-x-2 pt-2">
                             <TooltipProvider>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                                        <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-1 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
                                             <Linkedin size={36} />
                                         </a>
                                     </TooltipTrigger>
@@ -66,7 +66,7 @@ export default function Hero() {
                             <TooltipProvider>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
+                                        <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-1 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
                                             <Github size={36} />
                                         </a>
                                     </TooltipTrigger>
@@ -79,8 +79,11 @@ export default function Hero() {
                             <TooltipProvider>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <a href="/resume/Yusef_Harb_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-[var(--primary)] transition-colors">
-                                            <FileUser size={36} />
+                                        <a href="/resume/Yusef_Harb_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-2 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
+                                            <div className="flex items-center gap-2">
+                                                <FileUser size={36} />
+                                                <span className="hidden sm:inline-block font-lato text-sm">Resume</span>
+                                            </div>
                                         </a>
                                     </TooltipTrigger>
                                     <TooltipContent side="bottom">

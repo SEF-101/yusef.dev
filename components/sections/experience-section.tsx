@@ -10,34 +10,34 @@ import { Button } from "../ui/button";
 
 // experience
 const workExperiences = [
-  {
+    {
     title: "Senior Technician",
     company: "Iowa State University ITS Endpoint",
     location: "Ames, IA",
     period: "Oct 2022 – Present",
     description: [
-      "Act as a bridge between student technicians and admins, sharing updates and supporting workflows",
-      "Troubleshoot complex IT issues remotely and onsite for university employees",
-      "Manage IT equipment setup, imaging, and lifecycle using MECM and Active Directory",
-      "Develop training materials and mentor new hires to enhance technical skills",
-      "Coordinate equipment installation and repairs across campus facilities"
+      "Troubleshoot complex IT issues both remotely and onsite to ensure reliable support for university employees.",
+      "Manage IT equipment lifecycle using MECM, Active Directory, and administrative tools.",
+      "Act as a bridge between student technicians and admins, sharing updates and supporting workflows.",
+      "Develop training materials and mentor new hires to enhance technical problem-solving abilities."
     ],
     skills: ["MECM", "Active Directory", "Team Leadership", "Technical Support", "Windows Administration", "Software/Hardware Troubleshooting"]
   },
   {
-    title: "Software Developer",
+    title: "Lead Full-Stack Developer",
     company: "Automated Code Generation, Inc.",
-    location: "Remote / Ames, IA",
+    location: "Ames, IA",
     period: "May 2025 – Present",
     description: [
-      "First hire at an early-stage startup building a video analytics platform for AI-powered media workflows.",
-      "Collaborate directly with founders in Agile to define product direction and technical strategy.",
-      "Design and implement dynamic UI features in Expo/React Native with TypeScript, including navigation and video playback.",
-      "Integrate frontend with Django backend and AWS S3 for secure media delivery and structured content loading.",
-      "Contribute across the full stack, balancing UI development with backend/API integration."
+      "Lead engineer for an AI-powered video analytics SaaS platform, overseeing end-to-end product architecture, development, and deployment.",
+      "Collaborated in an Agile Scrum development cycle, coordinating sprints and priorities to deliver the product’s MVP.",
+      "Designed and built a cross-platform Expo React Native app in TypeScript with a cohesive design system using NativeWind and reusable components for Web, iOS, and Android.",
+      "Implemented and maintained Django backend with SQLite, authentication, REST APIs, and AWS deployment; managed multiple projects end-to-end.",
+      "Delivered a Next.js marketing site with a modern, accessible, and responsive design system."
     ],
-    skills: ["Expo", "React Native", "TypeScript", "Django", "Playwright" ,"AWS", "UI/UX Design", "Agile", "GitHub Issues", "Full Stack Development"]
-  }
+    skills: ["Expo", "React Native", "TypeScript", "NativeWind", "Django", "Playwright", "AWS", "UI/UX Design", "Agile", "GitHub Issues", "Full Stack Development"]
+  },
+
 ];
 
 const education = {
