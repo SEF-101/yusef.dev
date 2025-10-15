@@ -7,9 +7,9 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 
 export default function About() {
     const cats = [
-        { name: "Simba", src: "/catPics/simba.png", width: 140, height: 170, shape: "rounded-xl" },
-        // Nuna image made larger
-        { name: "Nuna", src: "/catPics/nuna.png", width: 220, height: 260, shape: "rounded-full" }
+        { name: "Simba", src: "/catPics/simba.png", width: 140, height: 170, shape: "rounded-full" },
+        { name: "Nuna", src: "/catPics/nuna.png", width: 220, height: 260, shape: "rounded-full" },
+        { name: "Nuna", src: "/catPics/nuna1.png", width: 200, height: 240, shape: "rounded-full" },
     ];
 
     const [selectedCat] = useState(() => cats[Math.floor(Math.random() * cats.length)]);
