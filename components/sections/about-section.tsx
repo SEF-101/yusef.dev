@@ -6,7 +6,22 @@ import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
 import { AuroraText } from "@/components/magicui/aurora-text";
 
 export default function About() {
+    const cats = [
+        { name: "Simba", src: "/catPics/simba.png", width: 140, height: 170, shape: "rounded-xl" },
+        // Nuna image made larger
+        { name: "Nuna", src: "/catPics/nuna.png", width: 220, height: 260, shape: "rounded-full" }
+    ];
+
+    const [selectedCat] = useState(() => cats[Math.floor(Math.random() * cats.length)]);
     const [isRevealed, setIsRevealed] = useState(false);
+    const auroraColors = selectedCat.name === "Simba"
+        ? ["#F59E0B", "#D97706", "#B45309", "#92400E"]
+        : ["#F59E0B", "#FFFFFF", "#8B5E3C"];
+
+    // ensure scratch canvas is at least the default size but grows to fit larger cat images
+    const scratchWidth = Math.max(200, selectedCat.width + 40);
+    const scratchHeight = Math.max(350, selectedCat.height + 40);
+
     return (
         <>
             <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
@@ -53,29 +68,29 @@ export default function About() {
 
                         {/* scratch reveal for cat */}
                         <div className="flex flex-col items-center">
-                            {!isRevealed && (<p className="text-center text-lg mb-2">Scratch to see my cat</p>)}
+                            {!isRevealed && (<p className="text-center text-lg mb-2">Scratch to see one of my cats</p>)}
                             <ScratchToReveal
-                                width={200}
-                                height={350}
+                                width={scratchWidth}
+                                height={scratchHeight}
                                 minScratchPercentage={50}
                                 gradientColors={["#3B82F6", "#1B2A41", "#334155"]}
-                                className="flex items-center justify-center overflow-hidden rounded-xl"
+                                className={`flex items-center justify-center overflow-hidden ${selectedCat.shape}`}
                                 onComplete={() => setIsRevealed(true)}
                             >
                                 <div className="flex flex-col items-center justify-center px-4">
                                     <Image
-                                        src="/simba.png"
-                                        alt="My cat"
-                                        width={140}
-                                        height={170}
+                                        src={selectedCat.src}
+                                        alt={selectedCat.name}
+                                        width={selectedCat.width}
+                                        height={selectedCat.height}
                                     />
                                     <div className="mt-2">
                                         <AuroraText
-                                            colors={["#F59E0B", "#D97706", "#B45309", "#92400E"]}
+                                            colors={auroraColors}
                                             speed={0.8}
                                             className="text-lg"
                                         >
-                                            Simba
+                                            {selectedCat.name}
                                         </AuroraText>
                                     </div>
                                 </div>
