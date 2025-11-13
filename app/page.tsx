@@ -3,6 +3,7 @@ import About from "@/components/sections/about-section";
 import Contact from "@/components/sections/contact-section";
 import Experience from "@/components/sections/experience-section";
 import Projects from "@/components/sections/projects-section";
+import Proxmox from "@/components/sections/proxmox-section";
 
 export default function Home() {
   return (
@@ -30,6 +31,13 @@ export default function Home() {
       <section id="about" className="py-16 bg-[var(--card)]">
         <div className="container mx-auto px-4">
           <About />
+        </div>
+      </section>
+
+      {/* proxmox / home lab */}
+      <section id="proxmox" className="py-16">
+        <div className="container mx-auto px-4">
+          <Proxmox />
         </div>
       </section>
 
