@@ -7,15 +7,45 @@ import { cn } from "@/lib/utils";
 export default function ProxmoxSection() {
   const services = [
     {
+      icon: "/homeLabIcons/homepage.png",
+      name: "Homepage",
+      description: "Self-hosted homepage for my projects",
+    },
+    {
       icon: "/homeLabIcons/jellyfin.png",
       name: "Jellyfin",
-      description: "Self-hosted media server",
+      description: "Self-hosted media streaming server for movies, TV, and music.",
     },
     {
       icon: "/homeLabIcons/homebox.png",
-      name: "NextCloud",
-      description: "Self-hosted cloud storage",
+      name: "Homebox",
+      description: "Self-hosted home inventorying and organization tool",
     },
+    {
+      icon: "/homeLabIcons/nginx-proxy-manager.png",
+      name: "Nginx Proxy Manager",
+      description: "Reverse proxy and TLS management for all services",
+    },
+    {
+      icon: "/homeLabIcons/audiobookshelf.png",
+      name: "Audiobookshelf",
+      description: "Self-hosted audiobook server",
+    },
+    {
+      icon: "/homeLabIcons/jellyseerr.png",
+      name: "Jellyseerr",
+      description: "Automated requests & metadata for media",
+    },
+    {
+      icon: "/homeLabIcons/uptime-kuma.png",
+      name: "Uptime Kuma",
+      description: "Service monitoring and alerting",
+    },
+    {
+      icon: "/homeLabIcons/filebrowser-quantum.png",
+      name: "File Browser",
+      description: "Self-hosted cloud storage and file manager.",
+    }
   ];
 
   const ServiceCard = ({
@@ -30,7 +60,7 @@ export default function ProxmoxSection() {
     return (
       <figure
         className={cn(
-          "relative h-full w-fit cursor-pointer overflow-hidden rounded-xl border p-4 sm:w-36",
+          "relative h-full w-fit min-w-[200px] cursor-pointer overflow-hidden rounded-xl border p-4 sm:w-36",
           // light styles
           "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
           // dark styles
@@ -39,20 +69,19 @@ export default function ProxmoxSection() {
       >
         <div className="flex flex-row items-center gap-2">
           <img
-            className="rounded-full"
+            className=""
             width="32"
             height="32"
             alt=""
             src={icon}
           />
           <div className="flex flex-col">
-            <figcaption className="text-sm font-medium dark:text-white">
+            <figcaption className="text-gray-300 text-md">
               {name}
             </figcaption>
-            <p className="text-xs font-medium dark:text-white/40">{description}</p>
           </div>
         </div>
-        <blockquote className="mt-2 text-sm">{description}</blockquote>
+        <blockquote className="mt-2 text-sm text-white font-lato">{description}</blockquote>
       </figure>
     );
   };
@@ -69,7 +98,7 @@ export default function ProxmoxSection() {
         <div className="md:w-1/2">
           <p className="text-lg font-lato mb-4">
             In my free time, I run a Proxmox virtualization server where I host
-            a variety of containers for development and self-hosted services,
+            a variety of self-hosted services for friends and family, as well as for development
             and experimentation.
           </p>
 
@@ -78,31 +107,39 @@ export default function ProxmoxSection() {
               <strong>Host OS:</strong> Debian (bookworm) with ZFS for storage
             </li>
             <li>
-              <strong>Containers:</strong> LXC for lightweight services
+              <strong>Containers:</strong> LXC for services
             </li>
             <li>
-              <strong>Backups:</strong> Regular snapshots and scheduled backups
-              to an external NAS
+              <strong>Backups:</strong> Scheduled backups
+              to an external storage
             </li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4">Running Services</h3>
-          <Marquee className="bg-[var(--card)] p-4 rounded-md shadow-inner">
+          <h3 className="text-2xl mt-20 mb-2">Running Services</h3>
+        
+          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+
+          <Marquee className="p-4 rounded-md shadow-inner">
             {services.map((service) => (
                 <ServiceCard key={service.name} {...service} />
             ))}
           </Marquee>
+          </div>
         </div>
 
         <div className="md:w-1/2 flex flex-col items-center">
-          <div className="w-full max-w-md rounded-md overflow-hidden border border-primary/20 shadow-lg bg-[var(--card)]">
+          <div className="w-full max-w-md rounded-md overflow-hidden shadow-lg ring-1 ring-primary/8">
             <Image
-              src="/projectPics/proxmox_dashboard.png"
-              alt="Proxmox dashboard placeholder"
-              width={600}
-              height={360}
+              src="/precision.png"
+              alt="Dell Precision 3630 server"
+              width={900}
+              height={540}
               className="object-cover w-full h-auto"
             />
+            <div className="p-4 bg-[var(--card)] border-t border-primary/10">
+              <h4 className="text-lg">Dell Precision 3630</h4>
+              <p className="text-sm text-gray-300 font-lato">Intel Xeon E-2124G • NVIDIA Quadro 2000 • 16Gb RAM</p>
+            </div>
           </div>
         </div>
       </div>
