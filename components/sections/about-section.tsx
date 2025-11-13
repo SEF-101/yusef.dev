@@ -35,7 +35,7 @@ export default function About() {
                 <div className="md:w-1/2 mx-auto">
                     <div className="space-y-5">
                         <p className="text-lg font-lato">
-                            Outside of developing software, I'm a first-generation Palestinian-American who's always been into building things and figuring out how they work. When I'm not coding, I'm enjoying one of my many hobbies such as drumming. I've been playing percussion for over 10 years, and that sense of rhythm and focus naturally shows up in how I approach problem-solving and teamwork.
+                            Outside of developing software, I'm a first-generation <AuroraText colors={['#CE1126','#FFFFFF','#007A3D']}>Palestinian</AuroraText>-<AuroraText colors={['#B31942','#0A3161','#FFFFFF']}>American</AuroraText> who's always been into building things and figuring out how they work. When I'm not coding, I'm enjoying one of my many hobbies such as drumming. I've been playing percussion for over 10 years, and that sense of rhythm and focus naturally shows up in how I approach problem-solving and teamwork.
                         </p>
 
                         <p className="text-lg font-lato">
