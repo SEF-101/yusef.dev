@@ -1,47 +1,33 @@
 import Hero from "@/components/hero";
-import About from "@/components/sections/about-section";
 import Contact from "@/components/sections/contact-section";
-import Experience from "@/components/sections/experience-section";
-import Projects from "@/components/sections/projects-section";
-import Proxmox from "@/components/sections/proxmox-section";
+import About from "@/components/sections/experience-section";
+import Services from "@/components/sections/services-section";
+import ITServices from "@/components/sections/it-services-section";
+import HowItWorks from "@/components/sections/how-it-works-section";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* landing page */}
       <section id="home" className="min-h-screen">
         <Hero />
       </section>
 
-      {/* experience */}
-      <section id="experience" className="py-16 bg-[var(--card)]">
-        <div className="container mx-auto px-4">
-          <Experience />
-        </div>
+      <section id="services" className="py-24">
+        <Services />
       </section>
 
-      {/* projects */}
-      <section id="projects" className="py-16">
-        <div className="container mx-auto px-4">
-          <Projects />
-        </div>
+      <section id="process" className="py-24 relative overflow-hidden">
+        <HowItWorks />
       </section>
 
-      {/* about */}
-      <section id="about" className="py-16 bg-[var(--card)]">
-        <div className="container mx-auto px-4">
-          <About />
-        </div>
+      <section id="it-services" className="py-24">
+        <ITServices />
       </section>
 
-      {/* proxmox / home lab */}
-      <section id="proxmox" className="py-16">
-        <div className="container mx-auto px-4">
-          <Proxmox />
-        </div>
+      <section id="about" className="py-24">
+        <About />
       </section>
 
-      {/* contact */}
       <section id="contact">
         <Contact />
       </section>

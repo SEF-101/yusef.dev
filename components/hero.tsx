@@ -1,100 +1,69 @@
-import { Meteors } from "@/components/magicui/meteors";
-import Image from "next/image";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Linkedin, Github , FileUser } from "lucide-react"
+"use client";
+
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { WordRotate } from "@/components/ui/word-rotate";
+import { CoolMode } from "@/components/ui/cool-mode";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
-    return (
-        <>
-            {/* hero  */}
-            <section className="flex flex-col min-h-screen text-[var(--foreground)] relative">
-                <div className="absolute inset-0">
-                    <Meteors />
-                </div>
+  return (
+    <section className="relative flex flex-col items-center justify-center min-h-screen px-6 py-20 overflow-hidden">
+      <DotPattern
+        className={cn(
+          "text-white/[0.07]",
+          "[mask-image:radial-gradient(ellipse_at_center,white_20%,transparent_70%)]"
+        )}
+        width={24}
+        height={24}
+        cr={1.2}
+      />
 
-                {/* main */}
-                <div className="flex flex-col md:flex-row items-center flex-grow px-8 py-12 relative z-10">
-                    {/* image */}
-                    <div className="flex justify-center relative w-full md:w-1/3 mb-8 md:mb-0 z-10">
-                        <Image
-                            src="/transparent.png"
-                            alt="Yusef's profile picture"
-                            width={500}
-                            height={450}
-                            className="object-cover w-3/4 md:w-full relative"
-                            priority
-                        />
-                    </div>
+      <div className="relative z-10 max-w-3xl text-center space-y-8">
+        <h1 className="text-5xl md:text-7xl font-anton leading-tight text-white">
+          I&apos;m Yusef.
+          <br />
+          <span className="text-primary inline-flex items-center gap-3">
+            I Build{" "}
+            <WordRotate
+              words={["Websites", "Web Apps", "Online Stores"]}
+              duration={3000}
+              className="text-primary inline-block"
+            />
+          </span>
+          <br />
+          <span className="text-3xl md:text-5xl text-gray-400">
+            & Solve IT Problems
+          </span>
+        </h1>
 
-                    {/* text */}
-                    <div className="w-full md:w-2/3 space-y-4 md:ml-8 relative text-center md:text-left z-10">
-                        <h1 className="text-4xl md:text-6xl font-bold">
-                            <span className="block relative">
-                                <span className="relative">Hi,</span>
-                            </span>
-                            <span className="block">
-                                I&apos;m 
-                                <span className="relative group">
-                                    <span className="text-[var(--primary)]"> Yusef</span>
-                                    <span className="absolute text-xs text-[var(--primary)] bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">101</span>
-                                </span>
-                            </span>
-                        </h1>
-                        <p className="text-lg font-lato">
-                            Software engineer building scalable systems and sleek interfaces.
-                        </p>
+        <p className="text-lg md:text-xl font-lato text-gray-500 max-w-xl mx-auto">
+          Custom websites for businesses and individuals who need a real online presence.
+          IT support for anyone who needs tech problems fixed right.
+        </p>
 
-                        <div className="flex justify-center md:justify-start space-x-2 pt-2">
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <a href="https://linkedin.com/in/yusef-h" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-1 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
-                                            <Linkedin size={36} />
-                                        </a>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="bottom" className="bg-accent">
-                                        <p className="font-lato">View My LinkedIn</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <a href="https://github.com/SEF-101" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-1 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
-                                            <Github size={36} />
-                                        </a>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="bottom">
-                                        <p className="font-lato">View My GitHub</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <a href="/resume/Yusef_Harb_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-1 py-2 rounded-md text-gray-400 hover:text-[var(--primary)] transition-colors">
-                                            <div className="flex items-center gap-2">
-                                                <FileUser size={36} />
-                                                <span className="hidden sm:inline-block font-lato text-sm">Resume</span>
-                                            </div>
-                                        </a>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="bottom">
-                                        <p className="font-lato">View My Resume</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <CoolMode options={{ particleCount: 12, size: 10, speedHorz: 5, speedUp: 15 }}>
+            <a href="#services">
+              <ShimmerButton
+                background="rgba(59, 130, 246, 0.9)"
+                shimmerColor="#93c5fd"
+                shimmerSize="0.06em"
+                borderRadius="8px"
+                className="px-8 py-3 text-lg font-lato font-bold"
+              >
+                See Services
+              </ShimmerButton>
+            </a>
+          </CoolMode>
+          <a
+            href="#contact"
+            className="px-8 py-3 border border-white/10 text-gray-300 rounded-lg font-lato font-bold text-lg hover:bg-white/5 hover:text-white transition-all duration-300"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }

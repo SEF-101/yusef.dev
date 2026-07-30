@@ -11,9 +11,9 @@ const projectData = [
     id: "1",
     image: "/pictureOfSite.png",
     category: "Next.js",
-    name: "yusef.dev | Yusef's Portfolio",
+    name: "yusef.dev",
     description:
-      "This very website you're exploring! Built with Next.js, TypeScript, and styled using Tailwind CSS with shadcn/ui components. Features interactive UI elements from Magic UI library. Showcases responsive design, smooth animations, and modern component architecture.",
+      "This very website — built with Next.js, TypeScript, Tailwind CSS, shadcn/ui, and Magic UI. A showcase of modern web development with responsive design, smooth animations, and clean architecture.",
     github: "https://github.com/SEF-101/yusef.dev"
   },
   {
@@ -22,7 +22,7 @@ const projectData = [
     category: "Java",
     name: "GeoExplore",
     description:
-      "A real-time city interaction app built in Java with WebSockets, REST APIs, and Google Maps. Enables hazard reporting, event sharing, and location tracking between citizens and city officials.",
+      "A real-time city interaction app built in Java with WebSockets, REST APIs, and Google Maps. Enables hazard reporting, event sharing, and location tracking.",
     github: "https://github.com/SEF-101/GeoExplore",
   },
   {
@@ -59,10 +59,15 @@ export default function Projects() {
   return (
     <>
       <BoxReveal boxColor="#3B82F6" width="fit-content" duration={0.5}>
-        <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-6 font-anton">
-          Projects
+        <h2 className="text-4xl font-bold border-l-4 border-primary pl-4 mb-4 font-anton">
+          Portfolio
         </h2>
       </BoxReveal>
+
+      <p className="text-lg font-lato text-gray-400 mb-6 max-w-3xl">
+        A selection of projects I&apos;ve built — from full-stack web apps to desktop tools.
+        Each one demonstrates the quality and care I bring to every project.
+      </p>
 
       <div className="flex flex-col gap-2">
         <div className="flex justify-end mb-1">
