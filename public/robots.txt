@@ -1,2 +1,5 @@
+# Crawling is allowed on purpose: every page and file sends "noindex", and search
+# engines can only see that if they're allowed to load the page. Blocking them here
+# instead would let the bare URL still show up in results when someone links to it.
 User-agent: *
-Disallow: /
+Allow: /

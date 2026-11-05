@@ -1,145 +1,176 @@
 "use client";
 
-import { BlurFade } from "@/components/ui/blur-fade";
-import {
-  Terminal,
-  AnimatedSpan,
-  TypingAnimation,
-} from "@/components/magicui/terminal";
-import {
-  Wrench,
-  Shield,
-  HardDrive,
-  Monitor,
-  Printer,
-  Mail,
-  HeartHandshake,
-  ArrowRight,
-} from "lucide-react";
+import { forwardRef, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { Laptop, Mail, Monitor, Printer, Smartphone, Wifi, type LucideIcon } from "lucide-react";
+import { AnimatedBeam } from "@/components/ui/animated-beam";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SectionHeading } from "@/components/section-heading";
+import { homeTechCare, hourlyRate, itServices, usd } from "@/lib/services";
 
-const itServices = [
-  {
-    icon: Wrench,
-    title: "PC & Laptop Repair",
-    description:
-      "Slow computer, crashing, hardware issues — I'll figure out what's wrong and fix it.",
-  },
-  {
-    icon: Shield,
-    title: "Virus & Malware Cleanup",
-    description:
-      "Got infected? I'll clean it out and lock things down so it doesn't happen again. Emergency service available.",
-  },
-  {
-    icon: HardDrive,
-    title: "Custom PC Builds",
-    description:
-      "Whether it's for gaming or work, I'll put together a build that fits your needs and budget.",
-  },
-  {
-    icon: Monitor,
-    title: "New Computer Setup & Transfer",
-    description:
-      "New PC? I'll set it up, move your files and apps over from the old one, and make sure everything works.",
-  },
-  {
-    icon: Printer,
-    title: "Printer & Peripheral Setup",
-    description:
-      "Printers, scanners, monitors, docking stations — I'll get your gear connected and working.",
-  },
-  {
-    icon: Mail,
-    title: "Email & Microsoft 365",
-    description:
-      "Need help with email, Outlook, Microsoft 365, or Google Workspace? I'll get it set up or fix what's broken.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Ongoing IT Support",
-    description:
-      "Don't want to deal with tech problems? I can be your go-to person on a monthly basis.",
-  },
-];
+type Mode = "remote" | "inPerson";
+
+const Node = forwardRef<HTMLDivElement, { icon: LucideIcon }>(({ icon: Icon }, ref) => (
+  <div
+    ref={ref}
+    className="z-10 flex size-12 items-center justify-center rounded-full border border-white/10 bg-[#111118] text-zinc-300"
+  >
+    <Icon className="size-5" />
+  </div>
+));
+Node.displayName = "Node";
+
+function DeviceMap() {
+  const container = useRef<HTMLDivElement>(null);
+  const center = useRef<HTMLDivElement>(null);
+  const laptop = useRef<HTMLDivElement>(null);
+  const desktop = useRef<HTMLDivElement>(null);
+  const printer = useRef<HTMLDivElement>(null);
+  const phone = useRef<HTMLDivElement>(null);
+  const wifi = useRef<HTMLDivElement>(null);
+  const mail = useRef<HTMLDivElement>(null);
+
+  const beam = {
+    containerRef: container,
+    toRef: center,
+    pathColor: "#3b3b52",
+    pathOpacity: 0.5,
+    pathWidth: 1.5,
+    gradientStartColor: "#5F98E7",
+    gradientStopColor: "#3B82F6",
+  };
+
+  return (
+    <figure>
+      <div
+        ref={container}
+        aria-hidden
+        className="relative flex h-[300px] w-full items-center justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] px-8 py-10 sm:px-12"
+      >
+        <div className="flex h-full flex-col justify-between">
+          <Node ref={laptop} icon={Laptop} />
+          <Node ref={desktop} icon={Monitor} />
+          <Node ref={printer} icon={Printer} />
+        </div>
+        <div
+          ref={center}
+          className="z-10 flex size-20 items-center justify-center rounded-2xl border border-blue-500/40 bg-black font-anton text-2xl tracking-wide text-logo text-glow shadow-[0_0_48px_rgba(59,130,246,0.25)]"
+        >
+          SEF
+        </div>
+        <div className="flex h-full flex-col justify-between">
+          <Node ref={phone} icon={Smartphone} />
+          <Node ref={wifi} icon={Wifi} />
+          <Node ref={mail} icon={Mail} />
+        </div>
+
+        <AnimatedBeam {...beam} fromRef={laptop} curvature={-50} duration={5} />
+        <AnimatedBeam {...beam} fromRef={desktop} duration={5.5} delay={0.6} />
+        <AnimatedBeam {...beam} fromRef={printer} curvature={50} duration={6} delay={1.2} />
+        <AnimatedBeam {...beam} fromRef={phone} curvature={-50} duration={5.5} delay={0.3} reverse />
+        <AnimatedBeam {...beam} fromRef={wifi} duration={5} delay={0.9} reverse />
+        <AnimatedBeam {...beam} fromRef={mail} curvature={50} duration={6} delay={1.5} reverse />
+      </div>
+      <figcaption className="mt-3 font-lato text-sm text-zinc-400">
+        Laptops, desktops, printers, phones, Wi-Fi and email. If it plugs in or signs in, I can help.
+      </figcaption>
+    </figure>
+  );
+}
 
 export default function ITServicesSection() {
+  const [mode, setMode] = useState<Mode>("remote");
+
   return (
     <div className="container mx-auto px-4">
-      <BlurFade delay={0.1} inView>
-        <h2 className="text-4xl md:text-5xl font-anton text-primary tracking-wide mb-4">
-          IT Services
-        </h2>
-        <div className="w-16 h-1 bg-primary mb-8" />
-      </BlurFade>
+      <SectionHeading
+        as="h1"
+        title="IT help"
+        intro="Flat prices for the jobs people need most, quoted before I touch anything. Most fixes work over a secure screen share that you start; the rest happen in person."
+      >
+        <ToggleGroup
+          type="single"
+          variant="outline"
+          value={mode}
+          onValueChange={(v) => v && setMode(v as Mode)}
+          aria-label="Show prices for"
+          className="shrink-0 font-lato"
+        >
+          <ToggleGroupItem
+            value="remote"
+            className="h-10 px-5 data-[state=on]:bg-blue-600 data-[state=on]:text-white"
+          >
+            Remote
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="inPerson"
+            className="h-10 px-5 data-[state=on]:bg-blue-600 data-[state=on]:text-white"
+          >
+            In person
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </SectionHeading>
 
-      <BlurFade delay={0.2} inView>
-        <p className="text-lg font-lato text-gray-400 mb-12 max-w-2xl">
-          I&apos;ve been the go-to tech person for years. Whether it&apos;s a broken
-          laptop, a virus, or setting up a new workstation — I can help. Contact for a quote.
-        </p>
-      </BlurFade>
-
-      <div className="flex flex-col lg:flex-row gap-10">
-        <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {itServices.map((service, idx) => (
-            <BlurFade key={idx} delay={0.1 + idx * 0.06} inView>
-              <div className="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/30 transition-all duration-300 h-full group">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/15 transition-colors">
-                    <service.icon size={20} />
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <ul className="border-t border-white/10">
+            {itServices.map((s) => {
+              const price = mode === "remote" ? s.remote : s.inPerson;
+              return (
+                <li key={s.name} className="grid grid-cols-[1fr_auto] gap-x-8 border-b border-white/10 py-6">
+                  <div>
+                    <h3 className="font-lato text-lg font-bold text-white">{s.name}</h3>
+                    <p className="mt-1.5 max-w-prose font-lato text-sm leading-relaxed text-zinc-400">
+                      {s.detail}
+                    </p>
                   </div>
-                  <h3 className="text-base font-semibold text-blue-300">{service.title}</h3>
-                </div>
-                <p className="text-gray-500 font-lato text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            </BlurFade>
-          ))}
+                  <div className="min-w-24 text-right">
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      <motion.div
+                        key={`${s.name}-${mode}`}
+                        initial={{ y: 14, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -14, opacity: 0 }}
+                        transition={{ duration: 0.22, ease: "easeOut" }}
+                      >
+                        {price === null ? (
+                          <span className="font-lato text-sm text-zinc-400">In person only</span>
+                        ) : (
+                          <>
+                            <span className="block font-anton text-3xl text-logo">{usd(price)}</span>
+                            {s.priceSuffix ? (
+                              <span className="font-lato text-xs text-zinc-400">{s.priceSuffix}</span>
+                            ) : null}
+                          </>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-6 font-lato text-sm leading-relaxed text-zinc-400">
+            Something not on the list? It&apos;s {usd(hourlyRate)}/hour, and I&apos;ll quote it before
+            I start. Data recovery from a failing drive is specialist work, so I&apos;ll point you to
+            someone who does it every day.
+          </p>
         </div>
 
-        <div className="lg:w-1/2 flex flex-col items-center justify-center">
-          <BlurFade delay={0.3} inView>
-            <Terminal className="w-full max-w-lg">
-              <TypingAnimation>$ sef --diagnose</TypingAnimation>
-              <AnimatedSpan className="text-blue-400">
-                <span>&#10004; Hardware scan... All good</span>
-              </AnimatedSpan>
-              <AnimatedSpan className="text-blue-400">
-                <span>&#10004; Network... Stable</span>
-              </AnimatedSpan>
-              <AnimatedSpan className="text-yellow-400">
-                <span>&#9888; 3 updates available</span>
-              </AnimatedSpan>
-              <AnimatedSpan className="text-blue-400">
-                <span>&#10004; Security... Clean</span>
-              </AnimatedSpan>
-              <TypingAnimation>$ sef --optimize</TypingAnimation>
-              <AnimatedSpan className="text-blue-400">
-                <span>&#10004; Cleared 4.2GB junk</span>
-              </AnimatedSpan>
-              <AnimatedSpan className="text-blue-400">
-                <span>&#10004; Boot time improved 47%</span>
-              </AnimatedSpan>
-              <AnimatedSpan className="text-primary font-bold">
-                <span>&#8594; Done. contact@yusef.dev</span>
-              </AnimatedSpan>
-            </Terminal>
-          </BlurFade>
+        <div className="flex flex-col gap-6 lg:col-span-5">
+          <DeviceMap />
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="font-anton text-xl tracking-wide text-white">{homeTechCare.name}</h3>
+              <p className="shrink-0">
+                <span className="font-anton text-3xl text-logo">{usd(homeTechCare.price)}</span>
+                <span className="font-lato text-sm text-zinc-400">/month</span>
+              </p>
+            </div>
+            <p className="mt-3 font-lato text-sm leading-relaxed text-zinc-400">{homeTechCare.detail}</p>
+          </div>
         </div>
       </div>
-
-      <BlurFade delay={0.5} inView>
-        <div className="mt-14 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-3 border border-primary/40 text-primary rounded-lg font-lato font-bold text-lg hover:bg-primary/10 transition-all duration-300"
-          >
-            Get IT Help
-            <ArrowRight size={18} />
-          </a>
-        </div>
-      </BlurFade>
     </div>
   );
 }

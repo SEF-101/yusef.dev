@@ -1,105 +1,193 @@
 "use client";
 
 import { useState } from "react";
-import { WarpBackground } from "@/components/magicui/warp-background";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { CalendarDays, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { CoolMode } from "@/components/ui/cool-mode";
-import { Mail, Send } from "lucide-react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { phoneHref, site } from "@/lib/site";
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+const needs = ["Website", "IT help", "Buying help", "Something else"] as const;
+type Status = "idle" | "sending" | "sent" | "error";
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function ContactSection() {
+  const [need, setNeed] = useState<string>("Website");
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<Status>("idle");
+
+  const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`New inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-    );
-    window.location.href = `mailto:contact@yusef.dev?subject=${subject}&body=${body}`;
-  };
+
+    if (!site.quoteFormEndpoint) {
+      const subject = encodeURIComponent(`${need} request from ${form.name}`);
+      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nNeed: ${need}\n\n${form.message}`);
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch(site.quoteFormEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ need, ...form }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  const fieldClass =
+    "h-12 border-white/10 bg-white/[0.03] font-lato text-white placeholder:text-zinc-500 focus-visible:border-blue-500/60";
 
   return (
-    <WarpBackground>
-      <div className="container mx-auto px-4 py-24 flex justify-center">
-        <BlurFade delay={0.1} inView>
-          <div className="w-full max-w-lg bg-[var(--background)]/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10">
-            <h2 className="text-3xl md:text-4xl font-anton text-primary tracking-wide mb-2 text-center">
-              Let&apos;s Work Together
-            </h2>
-            <p className="text-gray-400 font-lato text-center mb-8">
-              Have a project in mind? Need tech help? Send me a message.
-            </p>
+    <div className="relative overflow-hidden border-t border-white/5 bg-black">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-blue-600/15 blur-3xl"
+      />
+      <div className="container relative mx-auto grid grid-cols-1 gap-14 px-4 py-24 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <h1 className="font-anton text-4xl tracking-wide text-white md:text-5xl">Let&apos;s get it sorted</h1>
+          <p className="mt-5 max-w-md font-lato text-lg leading-relaxed text-zinc-400">
+            Book a free 15-minute call, or send a few details and I&apos;ll reply with a flat price
+            within 24 hours.
+          </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <Input
-                  type="text"
-                  placeholder="Your name"
-                  required
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="bg-white/[0.03] border-white/10 text-white placeholder:text-gray-600 font-lato h-12 focus:border-primary/50"
-                />
-              </div>
-              <div>
-                <Input
-                  type="email"
-                  placeholder="Your email"
-                  required
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="bg-white/[0.03] border-white/10 text-white placeholder:text-gray-600 font-lato h-12 focus:border-primary/50"
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder="Tell me about your project or what you need help with..."
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="bg-white/[0.03] border-white/10 text-white placeholder:text-gray-600 font-lato resize-none focus:border-primary/50"
-                />
-              </div>
-              <CoolMode options={{ particleCount: 20, size: 8, speedHorz: 6, speedUp: 18 }}>
-                <Button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/80 text-white font-lato font-bold h-12 text-base"
-                >
-                  <Send size={16} className="mr-2" />
-                  Send Message
-                </Button>
-              </CoolMode>
-            </form>
+          {site.bookingUrl ? (
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-lato font-bold text-white transition-colors hover:bg-blue-500"
+            >
+              <CalendarDays className="size-4" aria-hidden />
+              Pick a time for your free call
+            </a>
+          ) : null}
 
-            <div className="mt-8 pt-6 border-t border-white/5 text-center">
-              <p className="text-sm text-gray-500 font-lato mb-3">
-                Or email me directly
-              </p>
-              <a
-                href="mailto:contact@yusef.dev"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-lato"
-              >
-                <Mail size={16} />
-                contact@yusef.dev
+          <ul className="mt-10 space-y-4 font-lato text-zinc-300">
+            <li className="flex items-center gap-3">
+              <Mail className="size-4 text-logo" aria-hidden />
+              <a href={`mailto:${site.email}`} className="hover:text-white">
+                {site.email}
               </a>
+            </li>
+            {site.phone ? (
+              <li className="flex items-center gap-3">
+                <Phone className="size-4 text-logo" aria-hidden />
+                <a href={phoneHref} className="hover:text-white">
+                  {site.phone}
+                </a>
+              </li>
+            ) : null}
+            <li className="flex items-center gap-3">
+              <MapPin className="size-4 text-logo" aria-hidden />
+              {site.serviceArea}
+            </li>
+            <li className="flex items-center gap-3">
+              <Clock className="size-4 text-logo" aria-hidden />
+              {site.hours}
+            </li>
+          </ul>
+        </div>
+
+        <div className="lg:col-span-7">
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-sm sm:p-8"
+          >
+            <fieldset>
+              <legend className="font-lato font-bold text-white">What do you need?</legend>
+              <ToggleGroup
+                type="single"
+                variant="outline"
+                value={need}
+                onValueChange={(v) => v && setNeed(v)}
+                className="mt-3 flex w-full flex-wrap justify-start gap-2 font-lato"
+                spacing={2}
+              >
+                {needs.map((n) => (
+                  <ToggleGroupItem
+                    key={n}
+                    value={n}
+                    className="h-10 rounded-full border-white/15 px-4 text-zinc-300 data-[state=on]:border-blue-500 data-[state=on]:bg-blue-600 data-[state=on]:text-white"
+                  >
+                    {n}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+            </fieldset>
+
+            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="font-lato text-zinc-300">
+                  Name
+                </Label>
+                <Input id="name" required autoComplete="name" value={form.name} onChange={update("name")} className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="font-lato text-zinc-300">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={update("email")}
+                  className={fieldClass}
+                />
+              </div>
             </div>
-          </div>
-        </BlurFade>
+
+            <div className="mt-5 space-y-2">
+              <Label htmlFor="message" className="font-lato text-zinc-300">
+                What&apos;s going on?
+              </Label>
+              <Textarea
+                id="message"
+                required
+                rows={5}
+                value={form.message}
+                onChange={update("message")}
+                placeholder="My laptop takes 10 minutes to start up..."
+                className="min-h-36 resize-none border-white/10 bg-white/[0.03] font-lato text-white placeholder:text-zinc-500 focus-visible:border-blue-500/60"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="mt-6 h-12 w-full rounded-md bg-blue-600 font-lato font-bold text-white transition-colors hover:bg-blue-500 disabled:opacity-60"
+            >
+              {status === "sending" ? "Sending..." : "Send request"}
+            </button>
+
+            <p role="status" aria-live="polite" className="mt-4 min-h-6 font-lato text-sm">
+              {status === "sent" ? (
+                <span className="text-blue-300">Request sent. I&apos;ll reply within 24 hours.</span>
+              ) : status === "error" ? (
+                <span className="text-red-300">
+                  That didn&apos;t send. Email{" "}
+                  <a className="underline" href={`mailto:${site.email}`}>
+                    {site.email}
+                  </a>{" "}
+                  instead.
+                </span>
+              ) : null}
+            </p>
+          </form>
+        </div>
       </div>
-    </WarpBackground>
+    </div>
   );
 }

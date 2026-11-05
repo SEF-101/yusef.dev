@@ -1,69 +1,108 @@
 "use client";
 
-import { DotPattern } from "@/components/ui/dot-pattern";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { WordRotate } from "@/components/ui/word-rotate";
-import { CoolMode } from "@/components/ui/cool-mode";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { LightRays } from "@/components/ui/light-rays";
+import { TextAnimate } from "@/components/ui/text-animate";
+import { bookingHref, bookingIsExternal, site } from "@/lib/site";
+import { startingPrices, usd } from "@/lib/services";
+
+const doors = [
+  {
+    href: "/websites",
+    name: "Websites",
+    price: startingPrices.websites,
+    detail: "Custom-coded, mobile-ready and yours to keep",
+  },
+  {
+    href: "/it-help",
+    name: "IT help",
+    price: startingPrices.itHelp,
+    detail: "Slow computers, viruses, setups and PC builds",
+  },
+  {
+    href: "/buying-help",
+    name: "Buying help",
+    price: startingPrices.buyingHelp,
+    detail: "The right laptop, without the upsell",
+  },
+];
 
 export default function Hero() {
+  const primaryClass =
+    "rounded-md bg-blue-600 px-6 py-3 font-lato font-bold text-white shadow-[0_0_30px_rgba(59,130,246,0.35)] transition-colors hover:bg-blue-500";
+
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen px-6 py-20 overflow-hidden">
-      <DotPattern
-        className={cn(
-          "text-white/[0.07]",
-          "[mask-image:radial-gradient(ellipse_at_center,white_20%,transparent_70%)]"
-        )}
-        width={24}
-        height={24}
-        cr={1.2}
-      />
+    <div className="relative isolate overflow-hidden bg-black">
+      <LightRays count={6} color="rgba(59, 130, 246, 0.22)" blur={44} speed={16} length="85vh" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[var(--background)]" />
 
-      <div className="relative z-10 max-w-3xl text-center space-y-8">
-        <h1 className="text-5xl md:text-7xl font-anton leading-tight text-white">
-          I&apos;m Yusef.
-          <br />
-          <span className="text-primary inline-flex items-center gap-3">
-            I Build{" "}
-            <WordRotate
-              words={["Websites", "Web Apps", "Online Stores"]}
-              duration={3000}
-              className="text-primary inline-block"
-            />
-          </span>
-          <br />
-          <span className="text-3xl md:text-5xl text-gray-400">
-            & Solve IT Problems
-          </span>
-        </h1>
+      <div className="container relative mx-auto grid min-h-[calc(100svh-4rem)] grid-cols-1 items-center gap-14 px-4 py-20 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:col-span-7">
+          <h1 className="font-anton text-5xl leading-[1.05] tracking-wide text-white sm:text-6xl xl:text-7xl">
+            <TextAnimate as="span" by="word" animation="blurInUp" duration={0.5} once className="block">
+              I build websites
+            </TextAnimate>
+            <TextAnimate
+              as="span"
+              by="word"
+              animation="blurInUp"
+              duration={0.5}
+              delay={0.35}
+              once
+              className="block"
+            >
+              and fix computers.
+            </TextAnimate>
+          </h1>
 
-        <p className="text-lg md:text-xl font-lato text-gray-500 max-w-xl mx-auto">
-          Custom websites for businesses and individuals who need a real online presence.
-          IT support for anyone who needs tech problems fixed right.
-        </p>
+          <p className="mt-7 max-w-xl font-lato text-lg leading-relaxed text-zinc-400">
+            I&apos;m Yusef. I hand-code websites for small businesses and give honest, patient IT
+            help to anyone whose tech is acting up. {site.serviceArea}
+          </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-          <CoolMode options={{ particleCount: 12, size: 10, speedHorz: 5, speedUp: 15 }}>
-            <a href="#services">
-              <ShimmerButton
-                background="rgba(59, 130, 246, 0.9)"
-                shimmerColor="#93c5fd"
-                shimmerSize="0.06em"
-                borderRadius="8px"
-                className="px-8 py-3 text-lg font-lato font-bold"
-              >
-                See Services
-              </ShimmerButton>
-            </a>
-          </CoolMode>
-          <a
-            href="#contact"
-            className="px-8 py-3 border border-white/10 text-gray-300 rounded-lg font-lato font-bold text-lg hover:bg-white/5 hover:text-white transition-all duration-300"
-          >
-            Get in Touch
-          </a>
+          <div className="mt-10 flex flex-wrap gap-3">
+            {bookingIsExternal ? (
+              <a href={bookingHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
+                Book a free call
+              </a>
+            ) : (
+              <Link href={bookingHref} className={primaryClass}>
+                Book a free call
+              </Link>
+            )}
+            <Link
+              href="/contact"
+              className="rounded-md border border-white/15 px-6 py-3 font-lato font-bold text-zinc-200 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              Get a quote
+            </Link>
+          </div>
         </div>
+
+        <nav aria-label="Services and starting prices" className="lg:col-span-5">
+          <ul className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm">
+            {doors.map((d) => (
+              <li key={d.href}>
+                <Link
+                  href={d.href}
+                  className="group flex items-center justify-between gap-6 px-6 py-6 transition-colors hover:bg-white/[0.04] focus-visible:bg-white/[0.04] sm:px-8"
+                >
+                  <span>
+                    <span className="block font-anton text-2xl tracking-wide text-white transition-colors group-hover:text-logo">
+                      {d.name}
+                    </span>
+                    <span className="mt-1 block font-lato text-sm text-zinc-400">{d.detail}</span>
+                  </span>
+                  <span className="shrink-0 text-right">
+                    <span className="block font-lato text-xs text-zinc-400">from</span>
+                    <span className="block font-anton text-3xl text-logo">{usd(d.price)}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-    </section>
+    </div>
   );
 }

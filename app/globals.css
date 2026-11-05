@@ -8,11 +8,37 @@
   --color-background-dark: #0B0B0E;
   --color-surface: #111118;
   --color-accent: #1B2A41;
+  --color-logo: #5F98E7;
+  --color-logo-deep: #013781;
   --font-anton: 'Anton';
   --font-roboto: "Roboto", sans-serif;
   --font-lato: "Lato", sans-serif;
 
   --border: #1e1e2a;
+}
+
+/* Maps the shadcn/ui tokens below to Tailwind utilities (bg-muted, border-input, ring-ring...) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: #ef4444;
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer base {
@@ -36,18 +62,25 @@
     --radius: 0.5rem;
     --ring: #3B82F6;
     --border: #1e1e2a;
-    --input: #1e1e2a;
+    --input: #26263a;
   }
 
   body {
     background-color: var(--background);
     font-family: var(--font-anton);
   }
+
+  ::selection {
+    background: rgb(59 130 246 / 0.35);
+    color: #ffffff;
+  }
 }
 
 @theme inline {
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes shimmer-slide {
   to {
     transform: translate(calc(100cqw - 100%), 0);
@@ -67,10 +100,47 @@
     transform: translateZ(0) rotate(360deg);
     }
   }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 @layer base {
   * {
     @apply border-[var(--border)] outline-[var(--ring)]/50;
+  }
+}
+
+/* Glow used by the SEF wordmark, matching the logo */
+@utility text-glow {
+  text-shadow:
+    0 0 4px rgb(95 152 231 / 0.65),
+    0 0 14px rgb(59 130 246 / 0.5),
+    0 0 36px rgb(1 55 129 / 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
