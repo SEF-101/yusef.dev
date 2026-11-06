@@ -4,7 +4,8 @@ import MeetYusefSection from "@/components/sections/meet-yusef-section";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Meet Yusef, the software engineer behind SEF, the Software & Electronics Firm.",
+  description:
+    "Meet Yusef: a Software Engineer II at a Fortune 500 medical software company and the person behind SEF, the Software & Electronics Firm.",
 };
 
 export default function Page() {

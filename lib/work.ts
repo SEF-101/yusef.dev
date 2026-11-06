@@ -8,6 +8,19 @@ export const featuredSite = {
 };
 
 /**
+ * More projects, shown as cards under the featured site. Add `url` to show a
+ * visit link; leave it empty to keep the project unnamed.
+ */
+export const moreWork: { name: string; tags: string[]; summary: string; url?: string }[] = [
+  {
+    name: "University startup",
+    tags: ["Business website", "Equity partner"],
+    summary:
+      "Helped two founders, both Iowa State University professors, create their business website, and took equity in the company.",
+  },
+];
+
+/**
  * Photos of PCs you've built. Drop images in /public/work/builds/ and list them here,
  * e.g. { src: "/work/builds/white-itx.jpg", alt: "White mini-ITX gaming build" }.
  * The section stays hidden until at least one photo is listed.

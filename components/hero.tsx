@@ -56,8 +56,9 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl font-lato text-lg leading-relaxed text-zinc-400">
-            I&apos;m Yusef. I hand-code websites for small businesses and give honest, patient IT
-            help to anyone whose tech is acting up. {site.serviceArea}
+            I&apos;m Yusef, a software engineer at a Fortune 500 medical software company. On
+            weekends I hand-code websites for small businesses and give honest, patient IT help to
+            anyone whose tech is acting up. {site.serviceArea}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">

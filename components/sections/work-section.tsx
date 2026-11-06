@@ -2,13 +2,12 @@ import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
 import { Safari } from "@/components/ui/safari";
 import { SectionHeading } from "@/components/section-heading";
-import { buildPhotos, featuredSite, homelab } from "@/lib/work";
+import { buildPhotos, featuredSite, homelab, moreWork } from "@/lib/work";
 
 export default function WorkSection() {
   return (
     <div className="container mx-auto px-4">
-      <SectionHeading
-        as="h1" title="Work" />
+      <SectionHeading as="h1" title="Work" />
 
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
         <a
@@ -38,13 +37,60 @@ export default function WorkSection() {
         </div>
       </div>
 
+      {moreWork.length > 0 ? (
+        <ul className="mt-16 space-y-6">
+          {moreWork.map((w) => (
+            <li
+              key={w.name}
+              className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-10"
+            >
+              <div className="lg:col-span-5">
+                <div className="flex flex-wrap gap-2">
+                  {w.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 font-lato text-xs font-bold text-blue-200"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="mt-4 font-anton text-3xl tracking-wide text-white">{w.name}</h3>
+              </div>
+              <div className="lg:col-span-7">
+                <p className="font-lato text-lg leading-relaxed text-zinc-400">{w.summary}</p>
+                {w.url ? (
+                  <a
+                    href={w.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex font-lato font-bold text-blue-300 underline-offset-4 hover:underline"
+                  >
+                    Visit {w.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                  </a>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
       {buildPhotos.length > 0 ? (
         <div className="mt-20">
           <h3 className="font-anton text-3xl tracking-wide text-white">PC builds</h3>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
             {buildPhotos.map((p) => (
-              <div key={p.src} className="relative aspect-square overflow-hidden rounded-xl border border-white/10">
-                <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+              <div
+                key={p.src}
+                className="relative aspect-square overflow-hidden rounded-xl border border-white/10"
+              >
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -55,8 +101,8 @@ export default function WorkSection() {
         <div className="lg:col-span-4">
           <h3 className="font-anton text-3xl tracking-wide text-white">My homelab</h3>
           <p className="mt-4 font-lato leading-relaxed text-zinc-400">
-            {homelab.length} self-hosted services I set up, secure and keep running at home. It&apos;s
-            the same care I put into your computer or your site.
+            {homelab.length} self-hosted services I set up, secure and keep running at home. It&apos;s the
+            same care I put into your computer or your site.
           </p>
         </div>
         <div className="relative min-w-0 overflow-hidden lg:col-span-8 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">

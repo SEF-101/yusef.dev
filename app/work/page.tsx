@@ -4,7 +4,8 @@ import WorkSection from "@/components/sections/work-section";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Websites and systems built and run by SEF, including a custom campaign site and a self-hosted homelab.",
+  description:
+    "Websites and systems built and run by SEF, including a custom campaign site, a startup website and a self-hosted homelab.",
 };
 
 export default function Page() {
