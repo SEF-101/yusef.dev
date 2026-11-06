@@ -112,6 +112,21 @@ export const itServices: ItService[] = [
     inPerson: 99,
   },
   {
+    name: "Wi-Fi & network setup",
+    detail:
+      "New routers and mesh Wi-Fi set up and secured, dead zones fixed, guest networks added and every device connected. Homes and small offices.",
+    remote: 39,
+    inPerson: 79,
+  },
+  {
+    name: "Ethernet cable runs",
+    detail:
+      "Wired connections run to the rooms that need them, finished with wall plates and tested end to end. Long or tricky runs are quoted first.",
+    remote: null,
+    inPerson: 69,
+    priceSuffix: "per run + parts",
+  },
+  {
     name: "Printer, email & Microsoft 365",
     detail: "Connect printers and devices, or set up and fix email, Outlook, Microsoft 365 and Google accounts.",
     remote: 39,

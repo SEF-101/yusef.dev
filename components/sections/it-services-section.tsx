@@ -2,7 +2,7 @@
 
 import { forwardRef, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Laptop, Mail, Monitor, Printer, Smartphone, Wifi, type LucideIcon } from "lucide-react";
+import { Cable, Laptop, Monitor, Printer, Router, Smartphone, type LucideIcon } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { SectionHeading } from "@/components/section-heading";
@@ -27,8 +27,8 @@ function DeviceMap() {
   const desktop = useRef<HTMLDivElement>(null);
   const printer = useRef<HTMLDivElement>(null);
   const phone = useRef<HTMLDivElement>(null);
-  const wifi = useRef<HTMLDivElement>(null);
-  const mail = useRef<HTMLDivElement>(null);
+  const router = useRef<HTMLDivElement>(null);
+  const cable = useRef<HTMLDivElement>(null);
 
   const beam = {
     containerRef: container,
@@ -60,19 +60,19 @@ function DeviceMap() {
         </div>
         <div className="flex h-full flex-col justify-between">
           <Node ref={phone} icon={Smartphone} />
-          <Node ref={wifi} icon={Wifi} />
-          <Node ref={mail} icon={Mail} />
+          <Node ref={router} icon={Router} />
+          <Node ref={cable} icon={Cable} />
         </div>
 
         <AnimatedBeam {...beam} fromRef={laptop} curvature={-50} duration={5} />
         <AnimatedBeam {...beam} fromRef={desktop} duration={5.5} delay={0.6} />
         <AnimatedBeam {...beam} fromRef={printer} curvature={50} duration={6} delay={1.2} />
         <AnimatedBeam {...beam} fromRef={phone} curvature={-50} duration={5.5} delay={0.3} reverse />
-        <AnimatedBeam {...beam} fromRef={wifi} duration={5} delay={0.9} reverse />
-        <AnimatedBeam {...beam} fromRef={mail} curvature={50} duration={6} delay={1.5} reverse />
+        <AnimatedBeam {...beam} fromRef={router} duration={5} delay={0.9} reverse />
+        <AnimatedBeam {...beam} fromRef={cable} curvature={50} duration={6} delay={1.5} reverse />
       </div>
       <figcaption className="mt-3 font-lato text-sm text-zinc-400">
-        Laptops, desktops, printers, phones, Wi-Fi and email. If it plugs in or signs in, I can help.
+        Laptops, desktops, printers, phones, Wi-Fi and wired networks. If it plugs in, connects or signs in, I can help.
       </figcaption>
     </figure>
   );
@@ -86,7 +86,7 @@ export default function ITServicesSection() {
       <SectionHeading
         as="h1"
         title="IT help"
-        intro="Flat prices for the jobs people need most, quoted before I touch anything. Most fixes work over a secure screen share that you start; the rest happen in person."
+        intro="Flat prices for computers, Wi-Fi and networks, quoted before I touch anything. Most fixes work over a secure screen share that you start; cable runs and repairs happen in person."
       >
         <ToggleGroup
           type="single"

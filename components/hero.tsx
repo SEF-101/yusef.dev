@@ -17,7 +17,7 @@ const doors = [
     href: "/it-help",
     name: "IT help",
     price: startingPrices.itHelp,
-    detail: "Slow computers, viruses, setups and PC builds",
+    detail: "Slow computers, Wi-Fi, networking and PC builds",
   },
   {
     href: "/buying-help",
