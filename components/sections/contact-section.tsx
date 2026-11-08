@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CalendarDays, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,13 +8,32 @@ import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { phoneHref, site } from "@/lib/site";
 
-const needs = ["Website", "IT help", "Buying help", "Something else"] as const;
+const needs = ["Website", "IT help", "Business IT setup", "Something else"] as const;
 type Status = "idle" | "sending" | "sent" | "error";
+
+/** /contact?need=business preselects a choice, so service pages can link straight to the right form. */
+const needFromQuery: Record<string, (typeof needs)[number]> = {
+  website: "Website",
+  it: "IT help",
+  business: "Business IT setup",
+};
+
+const placeholders: Record<string, string> = {
+  Website: "I run a small bakery and need a site with our menu and hours...",
+  "IT help": "My laptop takes 10 minutes to start up...",
+  "Business IT setup": "We're opening a 6-table cafe: POS, Wi-Fi for guests, an office PC and a printer...",
+  "Something else": "Tell me what's going on...",
+};
 
 export default function ContactSection() {
   const [need, setNeed] = useState<string>("Website");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
+
+  useEffect(() => {
+    const preset = needFromQuery[new URLSearchParams(window.location.search).get("need") ?? ""];
+    if (preset) setNeed(preset);
+  }, []);
 
   const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -24,7 +43,9 @@ export default function ContactSection() {
 
     if (!site.quoteFormEndpoint) {
       const subject = encodeURIComponent(`${need} request from ${form.name}`);
-      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nNeed: ${need}\n\n${form.message}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nNeed: ${need}\n\n${form.message}`,
+      );
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       return;
     }
@@ -55,10 +76,12 @@ export default function ContactSection() {
       />
       <div className="container relative mx-auto grid grid-cols-1 gap-14 px-4 py-24 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <h1 className="font-anton text-4xl tracking-wide text-white md:text-5xl">Let&apos;s get it sorted</h1>
+          <h1 className="font-anton text-4xl tracking-wide text-white md:text-5xl">
+            Let&apos;s get it sorted
+          </h1>
           <p className="mt-5 max-w-md font-lato text-lg leading-relaxed text-zinc-400">
-            Book a free 15-minute call, or send a few details and I&apos;ll reply with a flat price
-            within 24 hours.
+            Book a free 15-minute call, or send a few details and I&apos;ll reply with a flat price within 24
+            hours.
           </p>
 
           {site.bookingUrl ? (
@@ -131,7 +154,14 @@ export default function ContactSection() {
                 <Label htmlFor="name" className="font-lato text-zinc-300">
                   Name
                 </Label>
-                <Input id="name" required autoComplete="name" value={form.name} onChange={update("name")} className={fieldClass} />
+                <Input
+                  id="name"
+                  required
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={update("name")}
+                  className={fieldClass}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email" className="font-lato text-zinc-300">
@@ -159,7 +189,7 @@ export default function ContactSection() {
                 rows={5}
                 value={form.message}
                 onChange={update("message")}
-                placeholder="My laptop takes 10 minutes to start up..."
+                placeholder={placeholders[need] ?? placeholders["Something else"]}
                 className="min-h-36 resize-none border-white/10 bg-white/[0.03] font-lato text-white placeholder:text-zinc-500 focus-visible:border-blue-500/60"
               />
             </div>

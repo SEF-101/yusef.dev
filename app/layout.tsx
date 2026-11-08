@@ -20,7 +20,7 @@ const lato = Lato({
 });
 
 const description =
-  "Hand-coded websites for small businesses and honest IT help: slow computers, viruses, Wi-Fi and networking, PC builds and laptop buying help. Remote anywhere in the US.";
+  "Hand-coded websites for small businesses, honest IT help and business IT setup: networks, Wi-Fi, cabling, computers and POS for restaurants, shops and offices.";
 
 export const metadata: Metadata = {
   title: {

@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useRef, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Cable, Laptop, Monitor, Printer, Router, Smartphone, type LucideIcon } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
@@ -72,7 +73,8 @@ function DeviceMap() {
         <AnimatedBeam {...beam} fromRef={cable} curvature={50} duration={6} delay={1.5} reverse />
       </div>
       <figcaption className="mt-3 font-lato text-sm text-zinc-400">
-        Laptops, desktops, printers, phones, Wi-Fi and wired networks. If it plugs in, connects or signs in, I can help.
+        Laptops, desktops, printers, phones, Wi-Fi and wired networks. If it plugs in, connects or signs in, I
+        can help.
       </figcaption>
     </figure>
   );
@@ -151,9 +153,16 @@ export default function ITServicesSection() {
             })}
           </ul>
           <p className="mt-6 font-lato text-sm leading-relaxed text-zinc-400">
-            Something not on the list? It&apos;s {usd(hourlyRate)}/hour, and I&apos;ll quote it before
-            I start. Data recovery from a failing drive is specialist work, so I&apos;ll point you to
-            someone who does it every day.
+            Something not on the list? It&apos;s {usd(hourlyRate)}/hour, and I&apos;ll quote it before I
+            start. Data recovery from a failing drive is specialist work, so I&apos;ll point you to someone
+            who does it every day.
+          </p>
+          <p className="mt-3 font-lato text-sm leading-relaxed text-zinc-400">
+            Setting up a whole office, shop or restaurant? See{" "}
+            <Link href="/business" className="text-blue-300 underline-offset-4 hover:underline">
+              Business IT setup
+            </Link>
+            .
           </p>
         </div>
 

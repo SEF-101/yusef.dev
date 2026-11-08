@@ -6,7 +6,8 @@ import { TextAnimate } from "@/components/ui/text-animate";
 import { bookingHref, bookingIsExternal, site } from "@/lib/site";
 import { startingPrices, usd } from "@/lib/services";
 
-const doors = [
+/** price: null shows "free quote" instead of a starting price. */
+const doors: { href: string; name: string; price: number | null; detail: string }[] = [
   {
     href: "/websites",
     name: "Websites",
@@ -20,10 +21,10 @@ const doors = [
     detail: "Slow computers, Wi-Fi, networking and PC builds",
   },
   {
-    href: "/buying-help",
-    name: "Buying help",
-    price: startingPrices.buyingHelp,
-    detail: "The right laptop, without the upsell",
+    href: "/business",
+    name: "Business IT setup",
+    price: null,
+    detail: "Networks, computers and POS for shops, offices and restaurants",
   },
 ];
 
@@ -56,9 +57,9 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl font-lato text-lg leading-relaxed text-zinc-400">
-            I&apos;m Yusef, a software engineer at a Fortune 500 medical software company. On
-            weekends I hand-code websites for small businesses and give honest, patient IT help to
-            anyone whose tech is acting up. {site.serviceArea}
+            I&apos;m Yusef, a software engineer at a Fortune 500 medical software company. On weekends I
+            hand-code websites for small businesses and give honest, patient IT help to anyone whose tech is
+            acting up. {site.serviceArea}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
@@ -95,8 +96,12 @@ export default function Hero() {
                     <span className="mt-1 block font-lato text-sm text-zinc-400">{d.detail}</span>
                   </span>
                   <span className="shrink-0 text-right">
-                    <span className="block font-lato text-xs text-zinc-400">from</span>
-                    <span className="block font-anton text-3xl text-logo">{usd(d.price)}</span>
+                    <span className="block font-lato text-xs text-zinc-400">
+                      {d.price === null ? "free" : "from"}
+                    </span>
+                    <span className="block font-anton text-3xl text-logo">
+                      {d.price === null ? "Quote" : usd(d.price)}
+                    </span>
                   </span>
                 </Link>
               </li>

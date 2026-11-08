@@ -155,34 +155,9 @@ export const homeTechCare = {
   detail: "One remote session a month (up to 45 minutes), regular checkups and 10% off any other job.",
 };
 
-export type BuyingOption = { name: string; price: number; where: string; detail: string };
-
-export const buyingHelp: BuyingOption[] = [
-  {
-    name: "Laptop Match",
-    price: 29,
-    where: "Video call",
-    detail:
-      "A 30-minute call about how you'll use it and what you want to spend, then a written shortlist of 3 picks with links.",
-  },
-  {
-    name: "Shop together",
-    price: 59,
-    where: "In person",
-    detail: "Up to 90 minutes in the store with you, so you leave with the right computer and skip the upsell.",
-  },
-  {
-    name: "Setup add-on",
-    price: 79,
-    where: "After you buy",
-    detail: "When the new computer arrives, I set it up and move your files over. Add it to either option.",
-  },
-];
-
 export const startingPrices = {
   websites: Math.min(...webPackages.map((p) => p.price)),
   itHelp: Math.min(...itServices.flatMap((s) => (s.remote === null ? [s.inPerson] : [s.remote, s.inPerson]))),
-  buyingHelp: Math.min(...buyingHelp.map((b) => b.price)),
 };
 
 export const usd = (n: number) =>

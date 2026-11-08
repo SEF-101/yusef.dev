@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Buying help was retired; send old links to the business setup page.
+  async redirects() {
+    return [{ source: "/buying-help", destination: "/business", permanent: true }];
+  },
 };
 
 export default nextConfig;
