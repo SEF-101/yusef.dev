@@ -10,6 +10,7 @@ type SiteConfig = {
   url: string;
   email: string;
   phone: string;
+  textNumber: string;
   bookingUrl: string;
   quoteFormEndpoint: string;
   serviceArea: string;
@@ -23,8 +24,11 @@ export const site: SiteConfig = {
   url: "https://sef101.com",
   email: "contact@sef101.com",
 
-  /** Business phone, e.g. "(312) 555-0100". Empty = hidden. */
+  /** Business phone for calls, e.g. "(312) 555-0100". Empty = hidden. */
   phone: "",
+
+  /** Business number for texts (Google Voice). Text only for now, so it isn't listed as a phone. */
+  textNumber: "(224) 432-0446",
 
   /** Free booking link (Cal.com or similar). Empty = "Book a free call" goes to the contact page. */
   bookingUrl: "",
@@ -42,3 +46,4 @@ export const site: SiteConfig = {
 export const bookingHref = site.bookingUrl || "/contact";
 export const bookingIsExternal = bookingHref.startsWith("http");
 export const phoneHref = site.phone ? `tel:${site.phone.replace(/[^\d+]/g, "")}` : "";
+export const smsHref = site.textNumber ? `sms:+1${site.textNumber.replace(/\D/g, "")}` : "";

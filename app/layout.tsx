@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import { Providers } from "@/components/providers";
 import { EasterEggs } from "@/components/easter-eggs";
 import "./globals.css";
@@ -57,9 +55,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-[var(--background)] text-white">
         <Providers>
           <EasterEggs />
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          {children}
           <Analytics />
         </Providers>
       </body>
