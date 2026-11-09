@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CalendarDays, Clock, Mail, MapPin, MessageSquareText, Phone } from "lucide-react";
+import { CalendarDays, Clock, Mail, MapPin, MessageSquareText, Phone, Siren } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { phoneHref, site, smsHref } from "@/lib/site";
+import { emergencyFee, usd } from "@/lib/services";
 
 const needs = ["Website", "IT help", "Business IT setup", "Something else"] as const;
 type Status = "idle" | "sending" | "sent" | "error" | "busy";
@@ -137,6 +138,15 @@ export default function ContactSection() {
               <Clock className="size-4 text-logo" aria-hidden />
               {site.hours}
             </li>
+            {smsHref ? (
+              <li className="flex items-start gap-3">
+                <Siren className="mt-1 size-4 shrink-0 text-logo" aria-hidden />
+                <span>
+                  Urgent? Text and say so. If I can take it sooner, there&apos;s a {usd(emergencyFee)} emergency
+                  fee.
+                </span>
+              </li>
+            ) : null}
           </ul>
         </div>
 

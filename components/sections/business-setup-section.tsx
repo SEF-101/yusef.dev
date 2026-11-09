@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { SectionHeading } from "@/components/section-heading";
+import { UrgentHelp } from "@/components/urgent-help";
 import {
   businessAreas,
   businessPlan,
@@ -239,6 +240,11 @@ export default function BusinessSetupSection() {
           </Link>
         </div>
       </section>
+
+      <UrgentHelp
+        className="mt-8"
+        lead="Register won't connect, or the office is offline? Text me and say it's urgent."
+      />
     </div>
   );
 }

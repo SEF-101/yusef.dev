@@ -9,6 +9,7 @@ import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/te
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { SectionHeading } from "@/components/section-heading";
 import { homeTechCare, hourlyRate, itServices, usd } from "@/lib/services";
+import { UrgentHelp } from "@/components/urgent-help";
 
 type Mode = "remote" | "inPerson";
 
@@ -121,7 +122,7 @@ export default function ITServicesSection() {
       <SectionHeading
         as="h1"
         title="IT help"
-        intro="Flat prices for computers, Wi-Fi and networks, quoted before I touch anything. Most fixes work over a secure screen share that you start; cable runs and repairs happen in person."
+        intro="Flat prices for the everyday fixes and a free quote for everything else, always before I touch anything. Most fixes work over a secure screen share that you start; cable runs and repairs happen in person."
       >
         <ToggleGroup
           type="single"
@@ -170,6 +171,11 @@ export default function ITServicesSection() {
                       >
                         {price === null ? (
                           <span className="font-lato text-sm text-zinc-400">In person only</span>
+                        ) : price === "quote" ? (
+                          <>
+                            <span className="block font-lato text-xs text-zinc-400">free</span>
+                            <span className="block font-anton text-3xl text-logo">Quote</span>
+                          </>
                         ) : (
                           <>
                             <span className="block font-anton text-3xl text-logo">{usd(price)}</span>
@@ -200,6 +206,7 @@ export default function ITServicesSection() {
         </div>
 
         <div className="flex flex-col gap-6 lg:col-span-5">
+          <UrgentHelp />
           <DeviceMap />
           <TuneUpLog />
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">

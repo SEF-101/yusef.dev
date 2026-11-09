@@ -29,7 +29,7 @@ export default function Footer() {
             {site.email}
           </a>
           <p>
-            © {new Date().getFullYear()} {site.name}. Every site hand-coded by {site.owner}.
+            © {new Date().getFullYear()} {site.name}.
           </p>
         </div>
       </div>

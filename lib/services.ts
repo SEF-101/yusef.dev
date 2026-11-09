@@ -83,12 +83,13 @@ export const carePlans: CarePlan[] = [
 export type ItService = {
   name: string;
   detail: string;
-  /** null = not offered remotely */
-  remote: number | null;
-  inPerson: number;
+  /** A flat price, "quote" when it depends on the job, or null = not offered remotely */
+  remote: number | "quote" | null;
+  inPerson: number | "quote";
   priceSuffix?: string;
 };
 
+/** The everyday fixes have flat prices; anything that depends on the job is a free quote. */
 export const itServices: ItService[] = [
   {
     name: "Slow-computer fix",
@@ -98,33 +99,11 @@ export const itServices: ItService[] = [
     inPerson: 69,
   },
   {
-    name: "Virus & malware cleanup",
-    detail:
-      "Remove infections, reset browsers, check for hijacked accounts and set up protection so it doesn't happen again.",
-    remote: 79,
-    inPerson: 99,
-  },
-  {
     name: "New computer setup",
     detail:
       "Updates, bloatware removed, accounts signed in, printer connected. In person, I also move your files from the old one.",
     remote: 49,
     inPerson: 99,
-  },
-  {
-    name: "Wi-Fi & network setup",
-    detail:
-      "New routers and mesh Wi-Fi set up and secured, dead zones fixed, guest networks added and every device connected. Homes and small offices.",
-    remote: 39,
-    inPerson: 79,
-  },
-  {
-    name: "Ethernet cable runs",
-    detail:
-      "Wired connections run to the rooms that need them, finished with wall plates and tested end to end. Long or tricky runs are quoted first.",
-    remote: null,
-    inPerson: 69,
-    priceSuffix: "per run + parts",
   },
   {
     name: "Printer, email & Microsoft 365",
@@ -133,21 +112,43 @@ export const itServices: ItService[] = [
     inPerson: 49,
   },
   {
+    name: "Virus & malware cleanup",
+    detail:
+      "Remove infections, reset browsers, check for hijacked accounts and set up protection so it doesn't happen again.",
+    remote: "quote",
+    inPerson: "quote",
+  },
+  {
+    name: "Wi-Fi & network setup",
+    detail:
+      "New routers and mesh Wi-Fi set up and secured, dead zones fixed, guest networks added and every device connected. Homes and small offices.",
+    remote: "quote",
+    inPerson: "quote",
+  },
+  {
+    name: "Ethernet cable runs",
+    detail: "Wired connections run to the rooms that need them, finished with wall plates and tested end to end.",
+    remote: null,
+    inPerson: "quote",
+  },
+  {
     name: "Hardware repair & upgrades",
     detail:
       "SSDs, RAM, batteries, fans and screens. A $35 diagnostic finds the problem and counts toward the repair.",
     remote: null,
-    inPerson: 59,
-    priceSuffix: "+ parts",
+    inPerson: "quote",
   },
   {
     name: "Custom PC build",
     detail:
       "Assembly, Windows and drivers, BIOS update, stress test and tidy cables. Buy the parts yourself, or I order them for a $40 fee.",
     remote: null,
-    inPerson: 119,
+    inPerson: "quote",
   },
 ];
+
+/** Added to the job's price when someone texts that it's urgent and it jumps the line. */
+export const emergencyFee = 50;
 
 export const homeTechCare = {
   name: "Home Tech Care",
@@ -157,7 +158,9 @@ export const homeTechCare = {
 
 export const startingPrices = {
   websites: Math.min(...webPackages.map((p) => p.price)),
-  itHelp: Math.min(...itServices.flatMap((s) => (s.remote === null ? [s.inPerson] : [s.remote, s.inPerson]))),
+  itHelp: Math.min(
+    ...itServices.flatMap((s) => [s.remote, s.inPerson].filter((p): p is number => typeof p === "number")),
+  ),
 };
 
 export const usd = (n: number) =>

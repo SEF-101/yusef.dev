@@ -1,11 +1,16 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/section-heading";
-import { hourlyRate, usd } from "@/lib/services";
+import { emergencyFee, hourlyRate, usd } from "@/lib/services";
+import { site } from "@/lib/site";
 
 const faqs = [
   {
     q: "Do you work weekdays?",
     a: "SEF jobs happen on weekends. I answer messages within 24 hours, any day of the week, and we book the next open weekend slot.",
+  },
+  {
+    q: "What if it's an emergency?",
+    a: `Text ${site.textNumber} and say it's urgent. If I can take it sooner, it jumps the line and a ${usd(emergencyFee)} emergency fee is added to the job's price.`,
   },
   {
     q: "How does remote help work?",
