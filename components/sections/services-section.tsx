@@ -1,6 +1,9 @@
 import { Check } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { MobileReadySection } from "@/components/device-showcase";
 import { SectionHeading } from "@/components/section-heading";
+import SiteFeatures from "@/components/sections/site-features";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import { carePlans, hourlyRate, usd, webPackages } from "@/lib/services";
 import { cn } from "@/lib/utils";
 
@@ -19,12 +22,10 @@ export default function WebsitesSection() {
             key={p.name}
             className={cn(
               "relative flex flex-col overflow-hidden rounded-2xl border p-8",
-              p.featured ? "border-blue-500/30 bg-blue-500/[0.04]" : "border-white/10 bg-white/[0.02]"
+              p.featured ? "border-blue-500/30 bg-blue-500/[0.04]" : "border-white/10 bg-white/[0.02]",
             )}
           >
-            {p.featured ? (
-              <BorderBeam size={140} duration={9} colorFrom="#5F98E7" colorTo="#013781" />
-            ) : null}
+            {p.featured ? <BorderBeam size={140} duration={9} colorFrom="#5F98E7" colorTo="#013781" /> : null}
 
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-anton text-2xl tracking-wide text-white">{p.name}</h3>
@@ -38,11 +39,12 @@ export default function WebsitesSection() {
 
             <p className="mt-8 flex items-baseline gap-2">
               {p.from ? <span className="font-lato text-sm text-zinc-400">from</span> : null}
-              <span className="font-anton text-5xl text-logo">{usd(p.price)}</span>
+              <span className="sr-only">{usd(p.price)}</span>
+              <span aria-hidden className="font-anton text-5xl text-logo">
+                $<NumberTicker value={p.price} className="tracking-normal text-logo" />
+              </span>
             </p>
-            <p className="mt-2 font-lato text-sm text-zinc-400">
-              {p.priceNote ?? "One flat price"}
-            </p>
+            <p className="mt-2 font-lato text-sm text-zinc-400">{p.priceNote ?? "One flat price"}</p>
 
             <ul className="mt-6 space-y-3 border-t border-white/10 pt-6">
               {p.features.map((f) => (
@@ -56,12 +58,20 @@ export default function WebsitesSection() {
         ))}
       </div>
 
-      <div className="mt-20 grid grid-cols-1 gap-10 lg:grid-cols-12">
+      <section aria-label="Built for phones" className="mt-28">
+        <MobileReadySection />
+      </section>
+
+      <div className="mt-28">
+        <SiteFeatures />
+      </div>
+
+      <div className="mt-28 grid grid-cols-1 gap-10 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <h3 className="font-anton text-3xl tracking-wide text-white">Care plans</h3>
           <p className="mt-4 font-lato leading-relaxed text-zinc-400">
-            While I host your site, a care plan keeps it fast, secure and up to date, and covers your
-            edits. You can leave any time: the domain is in your name and you get the code.
+            While I host your site, a care plan keeps it fast, secure and up to date, and covers your edits.
+            You can leave any time: the domain is in your name and you get the code.
           </p>
           <p className="mt-4 font-lato text-sm leading-relaxed text-zinc-400">
             Extra edits are {usd(hourlyRate)}/hour. Builds are 50% up front and 50% at launch.

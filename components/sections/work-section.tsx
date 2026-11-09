@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
+import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
 import { SectionHeading } from "@/components/section-heading";
 import { buildPhotos, featuredSite, homelab, moreWork } from "@/lib/work";
@@ -14,14 +15,17 @@ export default function WorkSection() {
           href={featuredSite.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block rounded-xl lg:col-span-8"
+          className="dark group relative block rounded-xl pb-[9%] lg:col-span-8"
           aria-label={`Open ${featuredSite.name} in a new tab`}
         >
           <Safari
             url={featuredSite.displayUrl}
             imageSrc={featuredSite.image}
-            className="size-full drop-shadow-[0_30px_60px_rgba(59,130,246,0.18)] transition-transform duration-500 group-hover:-translate-y-1"
+            className="w-[94%] drop-shadow-[0_30px_60px_rgba(59,130,246,0.18)] transition-transform duration-500 group-hover:-translate-y-1"
           />
+          <div className="absolute bottom-0 right-0 w-[21%] drop-shadow-[0_24px_40px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:-translate-y-2">
+            <Iphone src="/work/alderman-iphone.jpg" />
+          </div>
         </a>
         <div className="lg:col-span-4">
           <h3 className="font-anton text-3xl tracking-wide text-white">{featuredSite.name}</h3>

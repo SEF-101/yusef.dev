@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Cable, Laptop, Monitor, Printer, Router, Smartphone, type LucideIcon } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
+import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { SectionHeading } from "@/components/section-heading";
 import { homeTechCare, hourlyRate, itServices, usd } from "@/lib/services";
@@ -75,6 +76,38 @@ function DeviceMap() {
       <figcaption className="mt-3 font-lato text-sm text-zinc-400">
         Laptops, desktops, printers, phones, Wi-Fi and wired networks. If it plugs in, connects or signs in, I
         can help.
+      </figcaption>
+    </figure>
+  );
+}
+
+/** An example slow-computer fix, as it looks from my side of the screen share. */
+function TuneUpLog() {
+  return (
+    <figure className="min-w-0">
+      <Terminal className="max-w-none overflow-x-auto border-white/10 bg-black/60">
+        <TypingAnimation>$ sef tune-up --remote</TypingAnimation>
+        <AnimatedSpan className="text-blue-400">
+          <span>✔ Startup apps: 23 → 6</span>
+        </AnimatedSpan>
+        <AnimatedSpan className="text-blue-400">
+          <span>✔ Windows and drivers updated</span>
+        </AnimatedSpan>
+        <AnimatedSpan className="text-blue-400">
+          <span>✔ Malware scan: nothing found</span>
+        </AnimatedSpan>
+        <AnimatedSpan className="text-blue-400">
+          <span>✔ 41 GB of junk files cleared</span>
+        </AnimatedSpan>
+        <AnimatedSpan className="text-zinc-300">
+          <span>Boot time: 3 min 10 s → 38 s</span>
+        </AnimatedSpan>
+        <TypingAnimation className="text-logo">
+          → Your &quot;what I found&quot; note is in your inbox.
+        </TypingAnimation>
+      </Terminal>
+      <figcaption className="mt-3 font-lato text-sm text-zinc-400">
+        An example slow-computer fix, from my side of the screen share.
       </figcaption>
     </figure>
   );
@@ -168,6 +201,7 @@ export default function ITServicesSection() {
 
         <div className="flex flex-col gap-6 lg:col-span-5">
           <DeviceMap />
+          <TuneUpLog />
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
             <div className="flex items-baseline justify-between gap-4">
               <h3 className="font-anton text-xl tracking-wide text-white">{homeTechCare.name}</h3>

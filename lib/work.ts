@@ -31,9 +31,19 @@ export const homelab = [
   { icon: "/homeLabIcons/jellyfin.png", name: "Jellyfin", detail: "Family movies, shows and music" },
   { icon: "/homeLabIcons/audiobookshelf.png", name: "Audiobookshelf", detail: "Audiobooks and podcasts" },
   { icon: "/homeLabIcons/uptime-kuma.png", name: "Uptime Kuma", detail: "Alerts when something goes down" },
-  { icon: "/homeLabIcons/nginx-proxy-manager.png", name: "Nginx Proxy Manager", detail: "Secure access to every service" },
+  {
+    icon: "/homeLabIcons/nginx-proxy-manager.png",
+    name: "Nginx Proxy Manager",
+    detail: "Secure access to every service",
+  },
   { icon: "/homeLabIcons/homepage.png", name: "Homepage", detail: "One dashboard for everything" },
   { icon: "/homeLabIcons/filebrowser-quantum.png", name: "File Browser", detail: "Private cloud storage" },
   { icon: "/homeLabIcons/homebox.png", name: "Homebox", detail: "Home inventory" },
   { icon: "/homeLabIcons/jellyseerr.png", name: "Jellyseerr", detail: "Media requests" },
 ];
+
+/**
+ * Google Lighthouse scores for the campaign site, mobile test (median of 3 runs, Nov 2026).
+ * Re-run before changing these: npx lighthouse https://www.electcher7thward.com --form-factor=mobile
+ */
+export const lighthouse = { performance: 96, accessibility: 94, bestPractices: 100, seo: 100 };
