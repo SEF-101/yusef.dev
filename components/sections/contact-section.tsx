@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CalendarDays, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { CalendarDays, Clock, Mail, MapPin, MessageSquareText, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { phoneHref, site } from "@/lib/site";
+import { phoneHref, site, smsHref } from "@/lib/site";
 
 const needs = ["Website", "IT help", "Business IT setup", "Something else"] as const;
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "sending" | "sent" | "error" | "busy";
 
 /** /contact?need=business preselects a choice, so service pages can link straight to the right form. */
 const needFromQuery: Record<string, (typeof needs)[number]> = {
@@ -29,8 +29,11 @@ export default function ContactSection() {
   const [need, setNeed] = useState<string>("Website");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
+  const [trap, setTrap] = useState("");
+  const openedAt = useRef(0);
 
   useEffect(() => {
+    openedAt.current = Date.now();
     const preset = needFromQuery[new URLSearchParams(window.location.search).get("need") ?? ""];
     if (preset) setNeed(preset);
   }, []);
@@ -55,8 +58,12 @@ export default function ContactSection() {
       const res = await fetch(site.quoteFormEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ need, ...form }),
+        body: JSON.stringify({ need, ...form, fax: trap, elapsed: Date.now() - openedAt.current }),
       });
+      if (res.status === 429) {
+        setStatus("busy");
+        return;
+      }
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
@@ -103,6 +110,17 @@ export default function ContactSection() {
                 {site.email}
               </a>
             </li>
+            {smsHref ? (
+              <li className="flex items-center gap-3">
+                <MessageSquareText className="size-4 text-logo" aria-hidden />
+                <a href={smsHref} className="hover:text-white">
+                  {site.textNumber}
+                </a>
+                <span className="rounded-sm border border-logo px-1.5 pb-px pt-0.5 text-[11px] font-bold tracking-[0.08em] text-logo">
+                  TEXT
+                </span>
+              </li>
+            ) : null}
             {site.phone ? (
               <li className="flex items-center gap-3">
                 <Phone className="size-4 text-logo" aria-hidden />
@@ -194,6 +212,20 @@ export default function ContactSection() {
               />
             </div>
 
+            {/* Spam trap: hidden from people, filled in by bots. */}
+            <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
+              <label htmlFor="fax">Leave this empty</label>
+              <input
+                id="fax"
+                name="fax"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={trap}
+                onChange={(e) => setTrap(e.target.value)}
+              />
+            </div>
+
             <button
               type="submit"
               disabled={status === "sending"}
@@ -205,12 +237,20 @@ export default function ContactSection() {
             <p role="status" aria-live="polite" className="mt-4 min-h-6 font-lato text-sm">
               {status === "sent" ? (
                 <span className="text-blue-300">Request sent. I&apos;ll reply within 24 hours.</span>
-              ) : status === "error" ? (
+              ) : status === "error" || status === "busy" ? (
                 <span className="text-red-300">
-                  That didn&apos;t send. Email{" "}
+                  {status === "busy" ? "That's a lot of requests at once." : "That didn't send."} Email{" "}
                   <a className="underline" href={`mailto:${site.email}`}>
                     {site.email}
-                  </a>{" "}
+                  </a>
+                  {smsHref ? (
+                    <>
+                      {" "}or text{" "}
+                      <a className="underline" href={smsHref}>
+                        {site.textNumber}
+                      </a>
+                    </>
+                  ) : null}{" "}
                   instead.
                 </span>
               ) : null}

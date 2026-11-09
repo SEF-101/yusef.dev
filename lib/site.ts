@@ -34,10 +34,11 @@ export const site: SiteConfig = {
   bookingUrl: "",
 
   /**
-   * Where the quote form posts (a Formspree or similar endpoint that accepts JSON).
+   * Where the quote form posts. /api/contact emails it to contact@sef101.com through iCloud
+   * (set SMTP_USER and SMTP_PASS, see app/api/contact/route.ts).
    * Empty = the form opens the visitor's email app with the message filled in.
    */
-  quoteFormEndpoint: "",
+  quoteFormEndpoint: "/api/contact",
 
   serviceArea: "Remote anywhere in the US. In person by appointment.",
   hours: "Appointments on weekends. Replies within 24 hours.",
