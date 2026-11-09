@@ -2,14 +2,8 @@ import { MessageSquareText, Siren } from "lucide-react";
 import { emergencyFee, usd } from "@/lib/services";
 import { site, smsHref } from "@/lib/site";
 
-/** "Urgent? Text me" card with the emergency fee. Hidden when there's no text number. */
-export function UrgentHelp({
-  lead = "Computer dead before a deadline, or the Wi-Fi down when you need it? Text me and say it's urgent.",
-  className = "",
-}: {
-  lead?: string;
-  className?: string;
-}) {
+/** "Urgent? Text me" card with the emergency fee. Emergency help is remote only for now. */
+export function UrgentHelp({ className = "" }: { className?: string }) {
   if (!smsHref) return null;
 
   return (
@@ -28,8 +22,8 @@ export function UrgentHelp({
         </p>
       </div>
       <p className="mt-3 font-lato text-sm leading-relaxed text-zinc-400">
-        {lead} If I can take it sooner, it jumps the line and the {usd(emergencyFee)} emergency fee is added to
-        the job&apos;s price.
+        Got an urgent computer problem? Text me and say it&apos;s urgent. If I can take it sooner, it jumps the
+        line and the {usd(emergencyFee)} emergency fee is added to the job&apos;s price.
       </p>
       <a
         href={smsHref}
@@ -38,7 +32,9 @@ export function UrgentHelp({
         <MessageSquareText className="size-4" aria-hidden />
         Text {site.textNumber}
       </a>
-      <p className="mt-3 font-lato text-xs text-zinc-400">Texts only, no calls.</p>
+      <p className="mt-4 border-t border-white/10 pt-3 font-lato text-xs leading-relaxed text-zinc-400">
+        Emergency help is remote only for now, with no in-person emergency visits. Texts only, no calls.
+      </p>
     </section>
   );
 }

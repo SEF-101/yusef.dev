@@ -241,10 +241,7 @@ export default function BusinessSetupSection() {
         </div>
       </section>
 
-      <UrgentHelp
-        className="mt-8"
-        lead="Register won't connect, or the office is offline? Text me and say it's urgent."
-      />
+      <UrgentHelp className="mt-8" />
     </div>
   );
 }

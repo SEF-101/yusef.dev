@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "What if it's an emergency?",
-    a: `Text ${site.textNumber} and say it's urgent. If I can take it sooner, it jumps the line and a ${usd(emergencyFee)} emergency fee is added to the job's price.`,
+    a: `Text ${site.textNumber} and say it's urgent. If I can take it sooner, it jumps the line and a ${usd(emergencyFee)} emergency fee is added to the job's price. Emergency help is remote only for now, with no in-person emergency visits.`,
   },
   {
     q: "How does remote help work?",

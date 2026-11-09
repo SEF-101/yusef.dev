@@ -142,8 +142,8 @@ export default function ContactSection() {
               <li className="flex items-start gap-3">
                 <Siren className="mt-1 size-4 shrink-0 text-logo" aria-hidden />
                 <span>
-                  Urgent? Text and say so. If I can take it sooner, there&apos;s a {usd(emergencyFee)} emergency
-                  fee.
+                  Urgent computer problem? Text and say so. Emergency help is remote only, with a{" "}
+                  {usd(emergencyFee)} emergency fee.
                 </span>
               </li>
             ) : null}
