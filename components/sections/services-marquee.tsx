@@ -1,4 +1,5 @@
 import {
+  Box,
   Cable,
   Cpu,
   CreditCard,
@@ -26,6 +27,7 @@ const rowOne: Chip[] = [
   { label: "Slow laptops", icon: Laptop },
   { label: "Virus cleanup", icon: ShieldCheck },
   { label: "Custom PC builds", icon: Cpu },
+  { label: "Custom 3D prints", icon: Box },
   { label: "SSD & RAM upgrades", icon: HardDrive },
 ];
 

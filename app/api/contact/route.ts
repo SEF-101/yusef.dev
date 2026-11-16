@@ -17,7 +17,7 @@ import { site } from "@/lib/site";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const NEEDS = ["Website", "IT help", "Business IT setup", "Something else"];
+const NEEDS = ["Website", "IT help", "Business IT setup", "3D print", "Something else"];
 const EMAIL_RE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
 
 /** A few requests per visitor per 10 minutes. Kept in memory, so it is per server instance. */

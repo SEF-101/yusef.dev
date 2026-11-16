@@ -9,7 +9,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { phoneHref, site, smsHref } from "@/lib/site";
 import { emergencyFee, usd } from "@/lib/services";
 
-const needs = ["Website", "IT help", "Business IT setup", "Something else"] as const;
+const needs = ["Website", "IT help", "Business IT setup", "3D print", "Something else"] as const;
 type Status = "idle" | "sending" | "sent" | "error" | "busy";
 
 /** /contact?need=business preselects a choice, so service pages can link straight to the right form. */
@@ -17,12 +17,15 @@ const needFromQuery: Record<string, (typeof needs)[number]> = {
   website: "Website",
   it: "IT help",
   business: "Business IT setup",
+  print: "3D print",
 };
 
 const placeholders: Record<string, string> = {
   Website: "I run a small bakery and need a site with our menu and hours...",
   "IT help": "My laptop takes 10 minutes to start up...",
   "Business IT setup": "We're opening a 6-table cafe: POS, Wi-Fi for guests, an office PC and a printer...",
+  "3D print":
+    "A link to the model (or say you'll email the file), how big, which plastic and color, and how many...",
   "Something else": "Tell me what's going on...",
 };
 
@@ -35,8 +38,12 @@ export default function ContactSection() {
 
   useEffect(() => {
     openedAt.current = Date.now();
-    const preset = needFromQuery[new URLSearchParams(window.location.search).get("need") ?? ""];
+    const params = new URLSearchParams(window.location.search);
+    const preset = needFromQuery[params.get("need") ?? ""];
     if (preset) setNeed(preset);
+    // /contact?need=print&color=PLA%20Matte%20·%20Charcoal starts the message with the picked color.
+    const color = params.get("color")?.slice(0, 80);
+    if (color) setForm((f) => (f.message ? f : { ...f, message: `Color: ${color}\n\n` }));
   }, []);
 
   const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
